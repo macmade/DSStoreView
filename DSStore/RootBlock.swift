@@ -51,19 +51,8 @@ public class RootBlock
         
         for _ in 0 ..< tocCount
         {
-            let nameLength = try stream.readUInt8()
-            
-            guard let name = try stream.readString( length: size_t( nameLength ), encoding: .utf8 ) else
-            {
-                throw NSError( title: "Invalid .DS_Store File", message: "Invalid TOC name" )
-            }
-            
+            let name  = try stream.readString( length: size_t( try stream.readUInt8() ), encoding: .utf8 ) ?? ""
             let value = try stream.readUInt32( endianness: .big )
-            
-            if value >= offsets.count
-            {
-                throw NSError( title: "Invalid .DS_Store File", message: "Invalid TOC offset" )
-            }
             
             self.tables.append( ( name: name, value: value ) )
         }

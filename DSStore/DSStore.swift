@@ -60,13 +60,19 @@ public class DSStore
         
         self.rootBlock = try RootBlock( stream: stream, offset: size_t( self.header.offset1 ), size: size_t( self.header.size ) )
         
-        /*
         for table in self.rootBlock.tables
         {
-            let offset = self.rootBlock.offsets[ Int( table.value ) ] & ~0x1F
-            let size   = 1 << ( self.rootBlock.offsets[ Int( table.value ) ] & 0x1F )
+            if table.value >= self.rootBlock.offsets.count
+            {
+                throw NSError( title: "Cannot Read File", message: "Invalid TOC offset" )
+            }
             
-            NSLog( "0x%04X", size )
+            guard let ( offset, size ) = self.decodeOffsetAndSize( id: table.value ) else
+            {
+                throw NSError( title: "Cannot Read File", message: "Invalid TOC offset/size pair" )
+            }
+            
+            NSLog( "Size:        0x%04X", size )
             
             try stream.seek( offset: size_t( offset + 4 ), from: .begin )
             
@@ -74,19 +80,36 @@ public class DSStore
             let levels      = try stream.readUInt32( endianness: .big )
             let recordCount = try stream.readUInt32( endianness: .big )
             let blockCount  = try stream.readUInt32( endianness: .big )
-            let _          = try stream.readUInt32( endianness: .big )
+            let _           = try stream.readUInt32( endianness: .big )
             
-            NSLog( "Data ID: 0x%04X", dataID )
-            NSLog( "Levels:  0x%04X", levels )
-            NSLog( "Records: 0x%04X", recordCount )
-            NSLog( "Blocks:  0x%04X", blockCount )
+            NSLog( "Data ID:     0x%04X", dataID )
+            NSLog( "Levels:      0x%04X", levels )
+            NSLog( "Records:     0x%04X", recordCount )
+            NSLog( "Blocks:      0x%04X", blockCount )
             
             let dataOffset = self.rootBlock.offsets[ Int( dataID ) ] & ~0x1F
             let dataSize   = 1 << ( self.rootBlock.offsets[ Int( dataID ) ] & 0x1F )
             
-            NSLog( "0x%04X", dataOffset )
-            NSLog( "0x%04X", dataSize )
+            NSLog( "Data offset: 0x%04X", dataOffset )
+            NSLog( "Data size:   0x%04X", dataSize )
         }
-        */
+    }
+    
+    public func decodeOffsetAndSize( id: UInt32 ) -> ( offset: UInt32, size: UInt32 )?
+    {
+        if id >= self.rootBlock.offsets.count || id >= Int.max
+        {
+            return nil
+        }
+        
+        return DSStore.decodeOffsetAndSize( self.rootBlock.offsets[ Int( id ) ] )
+    }
+    
+    public class func decodeOffsetAndSize( _ value: UInt32 ) -> ( offset: UInt32, size: UInt32 )
+    {
+        let offset: UInt32 = value & ~0x1F
+        let size:   UInt32 = 1 << ( value & 0x1F )
+        
+        return ( offset: offset, size: size )
     }
 }
