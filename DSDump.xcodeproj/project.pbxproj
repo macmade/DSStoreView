@@ -474,6 +474,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 054C893E26B979510006A91C /* Debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 			};
 			name = Debug;
 		};
@@ -502,6 +505,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 054C896926B979510006A91C /* Debug - Library.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
