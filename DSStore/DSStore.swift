@@ -26,7 +26,8 @@ import Foundation
 
 public class DSStore
 {
-    private var rootBlock: RootBlock
+    public private( set ) var header:    Header
+    public private( set ) var rootBlock: RootBlock
     
     public convenience init?( path: String ) throws
     {
@@ -40,27 +41,52 @@ public class DSStore
             return nil
         }
         
-        let align   = try stream.readUInt32( endianness: .big )
-        let magic   = try stream.readUInt32( endianness: .big )
-        let offset1 = try stream.readUInt32( endianness: .big )
-        let size    = try stream.readUInt32( endianness: .big )
-        let offset2 = try stream.readUInt32( endianness: .big )
+        self.header = try Header( stream: stream )
         
-        guard align == 0x01, magic == 0x42756431 else
+        guard self.header.alignement == 0x01, self.header.magic == 0x42756431 else
         {
-            throw NSError( title: "Invalid .DS_Store File", message: "Invalid header magic bytes" )
+            throw NSError( title: "Cannot Read File", message: "Invalid header magic bytes" )
         }
         
-        guard offset1 == offset2, offset1 > 0 else
+        guard self.header.offset1 == self.header.offset2, self.header.offset1 > 0 else
         {
-            throw NSError( title: "Invalid .DS_Store File", message: "Invalid root block offset" )
+            throw NSError( title: "Cannot Read File", message: "Invalid root block offset" )
         }
         
-        guard size > 0 else
+        guard self.header.size > 0 else
         {
-            throw NSError( title: "Invalid .DS_Store File", message: "Invalid root block size" )
+            throw NSError( title: "Cannot Read File", message: "Invalid root block size" )
         }
         
-        self.rootBlock = try RootBlock( stream: stream, offset: size_t( offset1 ), size: size_t( size ) )
+        self.rootBlock = try RootBlock( stream: stream, offset: size_t( self.header.offset1 ), size: size_t( self.header.size ) )
+        
+        /*
+        for table in self.rootBlock.tables
+        {
+            let offset = self.rootBlock.offsets[ Int( table.value ) ] & ~0x1F
+            let size   = 1 << ( self.rootBlock.offsets[ Int( table.value ) ] & 0x1F )
+            
+            NSLog( "0x%04X", size )
+            
+            try stream.seek( offset: size_t( offset + 4 ), from: .begin )
+            
+            let dataID      = try stream.readUInt32( endianness: .big )
+            let levels      = try stream.readUInt32( endianness: .big )
+            let recordCount = try stream.readUInt32( endianness: .big )
+            let blockCount  = try stream.readUInt32( endianness: .big )
+            let _          = try stream.readUInt32( endianness: .big )
+            
+            NSLog( "Data ID: 0x%04X", dataID )
+            NSLog( "Levels:  0x%04X", levels )
+            NSLog( "Records: 0x%04X", recordCount )
+            NSLog( "Blocks:  0x%04X", blockCount )
+            
+            let dataOffset = self.rootBlock.offsets[ Int( dataID ) ] & ~0x1F
+            let dataSize   = 1 << ( self.rootBlock.offsets[ Int( dataID ) ] & 0x1F )
+            
+            NSLog( "0x%04X", dataOffset )
+            NSLog( "0x%04X", dataSize )
+        }
+        */
     }
 }

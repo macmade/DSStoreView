@@ -26,18 +26,20 @@ import Foundation
 
 public class RootBlock
 {
+    public private( set ) var offsets = [ UInt32 ]()
+    public private( set ) var tables  = [ ( name: String, value: UInt32 ) ]()
+    
     public init( stream: BinaryStream, offset: size_t, size: size_t ) throws
     {
         try stream.seek( offset: offset + 4, from: .begin )
         
         let offsetCount = try stream.readUInt32( endianness: .big )
-        var offsets     = [ UInt32 ]()
         
         try stream.seek( offset: 4, from: .current )
         
         for _ in 0 ..< offsetCount
         {
-            offsets.append( try stream.readUInt32( endianness: .big ) )
+            self.offsets.append( try stream.readUInt32( endianness: .big ) )
         }
         
         let pos       = stream.tell()
@@ -46,7 +48,6 @@ public class RootBlock
         try stream.seek( offset: tocOffset, from: .begin )
         
         let tocCount = try stream.readUInt32( endianness: .big )
-        var tocs     = [ ( name: String, value: UInt32 ) ]()
         
         for _ in 0 ..< tocCount
         {
@@ -64,7 +65,7 @@ public class RootBlock
                 throw NSError( title: "Invalid .DS_Store File", message: "Invalid TOC offset" )
             }
             
-            tocs.append( ( name: name, value: value ) )
+            self.tables.append( ( name: name, value: value ) )
         }
     }
 }
