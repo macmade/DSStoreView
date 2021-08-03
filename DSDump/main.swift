@@ -23,3 +23,17 @@
  ******************************************************************************/
 
 import Foundation
+import DSStore
+
+do
+{
+    guard let _ = try DSStore( path: "/Users/macmade/Desktop/.DS_Store" ) else
+    {
+        print( "Error..." )
+        exit( -1 )
+    }
+}
+catch let error
+{
+    print( error )
+}

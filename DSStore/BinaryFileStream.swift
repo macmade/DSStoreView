@@ -88,11 +88,11 @@ public class BinaryFileStream: BinaryStream
         self.pos += size;
     }
     
-    public func seek( offset: ssize_t, direction: SeekDirection ) throws
+    public func seek( offset: ssize_t, from: SeekPosition ) throws
     {
         var pos: size_t = 0
         
-        if direction == .begin
+        if from == .begin
         {
             if offset < 0
             {
@@ -101,7 +101,7 @@ public class BinaryFileStream: BinaryStream
             
             pos = offset
         }
-        else if direction == .end
+        else if from == .end
         {
             if offset > 0
             {

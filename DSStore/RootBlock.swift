@@ -24,43 +24,47 @@
 
 import Foundation
 
-public class DSStore
+public class RootBlock
 {
-    private var rootBlock: RootBlock
-    
-    public convenience init?( path: String ) throws
+    public init( stream: BinaryStream, offset: size_t, size: size_t ) throws
     {
-        try self.init( url: URL( fileURLWithPath: path ) )
-    }
-    
-    public init?( url: URL ) throws
-    {
-        guard let stream = BinaryFileStream( url: url ) else
+        try stream.seek( offset: offset + 4, from: .begin )
+        
+        let offsetCount = try stream.readUInt32( endianness: .big )
+        var offsets     = [ UInt32 ]()
+        
+        try stream.seek( offset: 4, from: .current )
+        
+        for _ in 0 ..< offsetCount
         {
-            return nil
+            offsets.append( try stream.readUInt32( endianness: .big ) )
         }
         
-        let align   = try stream.readUInt32( endianness: .big )
-        let magic   = try stream.readUInt32( endianness: .big )
-        let offset1 = try stream.readUInt32( endianness: .big )
-        let size    = try stream.readUInt32( endianness: .big )
-        let offset2 = try stream.readUInt32( endianness: .big )
+        let pos       = stream.tell()
+        let tocOffset = pos + ( -pos & 1023 ) + 12
         
-        guard align == 0x01, magic == 0x42756431 else
+        try stream.seek( offset: tocOffset, from: .begin )
+        
+        let tocCount = try stream.readUInt32( endianness: .big )
+        var tocs     = [ ( name: String, value: UInt32 ) ]()
+        
+        for _ in 0 ..< tocCount
         {
-            throw NSError( title: "Invalid .DS_Store File", message: "Invalid header magic bytes" )
+            let nameLength = try stream.readUInt8()
+            
+            guard let name = try stream.readString( length: size_t( nameLength ), encoding: .utf8 ) else
+            {
+                throw NSError( title: "Invalid .DS_Store File", message: "Invalid TOC name" )
+            }
+            
+            let value = try stream.readUInt32( endianness: .big )
+            
+            if value >= offsets.count
+            {
+                throw NSError( title: "Invalid .DS_Store File", message: "Invalid TOC offset" )
+            }
+            
+            tocs.append( ( name: name, value: value ) )
         }
-        
-        guard offset1 == offset2, offset1 > 0 else
-        {
-            throw NSError( title: "Invalid .DS_Store File", message: "Invalid root block offset" )
-        }
-        
-        guard size > 0 else
-        {
-            throw NSError( title: "Invalid .DS_Store File", message: "Invalid root block size" )
-        }
-        
-        self.rootBlock = try RootBlock( stream: stream, offset: size_t( offset1 ), size: size_t( size ) )
     }
 }

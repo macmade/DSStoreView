@@ -29,8 +29,8 @@ class TestBinaryDataStream: XCTestCase
 {
     func testInit() throws
     {
-        var stream1 = BinaryDataStream( bytes: [ 0x00, 0x00 ] )
-        var stream2 = BinaryDataStream( data: Data( [ 0x00, 0x00 ] ) )
+        let stream1 = BinaryDataStream( bytes: [ 0x00, 0x00 ] )
+        let stream2 = BinaryDataStream( data: Data( [ 0x00, 0x00 ] ) )
         
         XCTAssertEqual( stream1.availableBytes(), 2 )
         XCTAssertEqual( stream2.availableBytes(), 2 )
@@ -38,7 +38,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testHasBytesAvailable() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0, 0, 0 ] )
+        let stream = BinaryDataStream( bytes: [ 0, 0, 0 ] )
         
         XCTAssertTrue( stream.hasBytesAvailable() )
         
@@ -57,7 +57,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testAvailableBytes() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0, 0, 0 ] )
+        let stream = BinaryDataStream( bytes: [ 0, 0, 0 ] )
         
         XCTAssertEqual( stream.availableBytes(), 3 )
         
@@ -76,7 +76,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testTell() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0, 0, 0 ] )
+        let stream = BinaryDataStream( bytes: [ 0, 0, 0 ] )
         
         XCTAssertEqual( stream.tell(), 0 )
         
@@ -95,49 +95,40 @@ class TestBinaryDataStream: XCTestCase
     
     func testSeek() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0, 0, 0 ] )
+        let stream = BinaryDataStream( bytes: [ 0, 0, 0 ] )
         
-        XCTAssertNoThrow( try stream.seek( offset: 0, direction: .begin ) )
+        XCTAssertNoThrow( try stream.seek( offset: 0, from: .begin ) )
         XCTAssertEqual( stream.availableBytes(), 3 )
-        XCTAssertNoThrow( try stream.seek( offset: 1, direction: .begin ) )
+        XCTAssertNoThrow( try stream.seek( offset: 1, from: .begin ) )
         XCTAssertEqual( stream.availableBytes(), 2 )
-        XCTAssertNoThrow( try stream.seek( offset: 2, direction: .begin ) )
+        XCTAssertNoThrow( try stream.seek( offset: 2, from: .begin ) )
         XCTAssertEqual( stream.availableBytes(), 1 )
-        XCTAssertNoThrow( try stream.seek( offset: 3, direction: .begin ) )
+        XCTAssertNoThrow( try stream.seek( offset: 3, from: .begin ) )
         XCTAssertEqual( stream.availableBytes(), 0 )
-        XCTAssertThrowsError( try stream.seek( offset: 4, direction: .begin ) )
+        XCTAssertThrowsError( try stream.seek( offset: 4, from: .begin ) )
         
-        XCTAssertNoThrow( try stream.seek( offset: 0, direction: .end ) )
+        XCTAssertNoThrow( try stream.seek( offset: 0, from: .end ) )
         XCTAssertEqual( stream.availableBytes(), 0 )
-        XCTAssertNoThrow( try stream.seek( offset: -1, direction: .end ) )
+        XCTAssertNoThrow( try stream.seek( offset: -1, from: .end ) )
         XCTAssertEqual( stream.availableBytes(), 1 )
-        XCTAssertNoThrow( try stream.seek( offset: -2, direction: .end ) )
+        XCTAssertNoThrow( try stream.seek( offset: -2, from: .end ) )
         XCTAssertEqual( stream.availableBytes(), 2 )
-        XCTAssertNoThrow( try stream.seek( offset: -3, direction: .end ) )
+        XCTAssertNoThrow( try stream.seek( offset: -3, from: .end ) )
         XCTAssertEqual( stream.availableBytes(), 3 )
-        XCTAssertThrowsError( try stream.seek( offset: -4, direction: .end ) )
+        XCTAssertThrowsError( try stream.seek( offset: -4, from: .end ) )
         
-        XCTAssertNoThrow( try stream.seek( offset: 1, direction: .current ) )
+        XCTAssertNoThrow( try stream.seek( offset: 1, from: .current ) )
         XCTAssertEqual( stream.availableBytes(), 2 )
-        XCTAssertNoThrow( try stream.seek( offset: 1, direction: .current ) )
+        XCTAssertNoThrow( try stream.seek( offset: 1, from: .current ) )
         XCTAssertEqual( stream.availableBytes(), 1 )
-        XCTAssertNoThrow( try stream.seek( offset: 1, direction: .current ) )
+        XCTAssertNoThrow( try stream.seek( offset: 1, from: .current ) )
         XCTAssertEqual( stream.availableBytes(), 0 )
-        XCTAssertThrowsError( try stream.seek( offset: 1, direction: .current ) )
-        
-        XCTAssertNoThrow( try stream.seek( offset: 0, direction: .begin ) )
-        XCTAssertNoThrow( try stream.seek( offset: 1 ) )
-        XCTAssertEqual( stream.availableBytes(), 2 )
-        XCTAssertNoThrow( try stream.seek( offset: 1 ) )
-        XCTAssertEqual( stream.availableBytes(), 1 )
-        XCTAssertNoThrow( try stream.seek( offset: 1 ) )
-        XCTAssertEqual( stream.availableBytes(), 0 )
-        XCTAssertThrowsError( try stream.seek( offset: 1 ) )
+        XCTAssertThrowsError( try stream.seek( offset: 1, from: .current ) )
     }
     
     func testRead() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81 ] )
         let read1  = try stream.read( size: 2 )
         let read2  = try stream.read( size: 4 )
         
@@ -173,7 +164,7 @@ class TestBinaryDataStream: XCTestCase
     func testReadAll() throws
     {
         let data: [ UInt8 ] = [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81 ]
-        var stream          = BinaryDataStream( bytes: data )
+        let stream          = BinaryDataStream( bytes: data )
         let read            = try stream.readAll()
         
         XCTAssertEqual( data, read )
@@ -183,7 +174,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadUInt8() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81 ] )
         
         XCTAssertEqual( try stream.readUInt8(), 0x00 )
         XCTAssertEqual( try stream.readUInt8(), 0x42 )
@@ -196,7 +187,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadInt8() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81 ] )
         
         XCTAssertEqual( try stream.readInt8(), Int8( bitPattern: 0x00 ) )
         XCTAssertEqual( try stream.readInt8(), Int8( bitPattern: 0x42 ) )
@@ -209,7 +200,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadUInt16LittleEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readUInt16( endianness: .little ), 0x4200 )
         XCTAssertEqual( try stream.readUInt16( endianness: .little ), 0x4443 )
@@ -220,7 +211,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadUInt16BigEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readUInt16( endianness: .big ), 0x0042 )
         XCTAssertEqual( try stream.readUInt16( endianness: .big ), 0x4344 )
@@ -231,7 +222,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadInt16LittleEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readInt16( endianness: .little ), Int16( bitPattern: 0x4200 ) )
         XCTAssertEqual( try stream.readInt16( endianness: .little ), Int16( bitPattern: 0x4443 ) )
@@ -242,7 +233,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadInt16BigEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readInt16( endianness: .big ), Int16( bitPattern: 0x0042 ) )
         XCTAssertEqual( try stream.readInt16( endianness: .big ), Int16( bitPattern: 0x4344 ) )
@@ -253,7 +244,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadUInt32LittleEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readUInt32( endianness: .little ), 0x44434200 )
         XCTAssertEqual( try stream.readUInt32( endianness: .little ), 0x83828180 )
@@ -262,7 +253,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadUInt32BigEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readUInt32( endianness: .big ), 0x00424344 )
         XCTAssertEqual( try stream.readUInt32( endianness: .big ), 0x80818283 )
@@ -271,7 +262,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadInt32LittleEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readInt32( endianness: .little ), Int32( bitPattern: 0x44434200 ) )
         XCTAssertEqual( try stream.readInt32( endianness: .little ), Int32( bitPattern: 0x83828180 ) )
@@ -280,7 +271,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadInt32BigEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readInt32( endianness: .big ), Int32( bitPattern: 0x00424344 ) )
         XCTAssertEqual( try stream.readInt32( endianness: .big ), Int32( bitPattern: 0x80818283 ) )
@@ -289,7 +280,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadUInt64LittleEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readUInt64( endianness: .little ), 0x4443420044434200 )
         XCTAssertEqual( try stream.readUInt64( endianness: .little ), 0x8382818083828180 )
@@ -297,7 +288,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadUInt64BigEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readUInt64( endianness: .big ), 0x42434400424344 )
         XCTAssertEqual( try stream.readUInt64( endianness: .big ), 0x8081828380818283 )
@@ -306,7 +297,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadInt64LittleEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readInt64( endianness: .little ), Int64( bitPattern: 0x4443420044434200 ) )
         XCTAssertEqual( try stream.readInt64( endianness: .little ), Int64( bitPattern: 0x8382818083828180 ) )
@@ -315,7 +306,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadInt64BigEndian() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83, 0x80, 0x81, 0x82, 0x83 ] )
+        let stream = BinaryDataStream( bytes: [ 0x00, 0x42, 0x43, 0x44, 0x00, 0x42, 0x43, 0x44, 0x80, 0x81, 0x82, 0x83, 0x80, 0x81, 0x82, 0x83 ] )
         
         XCTAssertEqual( try stream.readInt64( endianness: .big ), Int64( bitPattern: 0x42434400424344 ) )
         XCTAssertEqual( try stream.readInt64( endianness: .big ), Int64( bitPattern: 0x8081828380818283 ) )
@@ -324,7 +315,7 @@ class TestBinaryDataStream: XCTestCase
     
     func testReadString() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x41, 0x42, 0x43, 0x44, 0x45, 0x46 ] )
+        let stream = BinaryDataStream( bytes: [ 0x41, 0x42, 0x43, 0x44, 0x45, 0x46 ] )
         let str1   = try stream.readString( length: 2, encoding: .utf8 )
         let str2   = try stream.readString( length: 4, encoding: .utf8 )
         
@@ -339,7 +330,7 @@ class TestBinaryDataStream: XCTestCase
     
     func readNULLTerminatedString() throws
     {
-        var stream = BinaryDataStream( bytes: [ 0x41, 0x42, 0x00, 0x43, 0x44, 0x45, 0x46, 0x00, 0x00 ] )
+        let stream = BinaryDataStream( bytes: [ 0x41, 0x42, 0x00, 0x43, 0x44, 0x45, 0x46, 0x00, 0x00 ] )
         let str1   = try stream.readNULLTerminatedString( encoding: .utf8 )
         let str2   = try stream.readNULLTerminatedString( encoding: .utf8 )
         let str3   = try stream.readNULLTerminatedString( encoding: .utf8 )

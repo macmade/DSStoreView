@@ -24,7 +24,7 @@
 
 import Foundation
 
-public enum SeekDirection
+public enum SeekPosition
 {
     case current
     case begin
@@ -39,45 +39,44 @@ public enum Endianness
 
 public protocol BinaryStream
 {
-             func tell() -> size_t
-    mutating func seek( offset: ssize_t, direction: SeekDirection ) throws
-    mutating func read( buffer: UnsafeMutableBufferPointer< UInt8 >, size: size_t ) throws
+    func tell() -> size_t
+    func seek( offset: ssize_t, from: SeekPosition ) throws
+    func read( buffer: UnsafeMutableBufferPointer< UInt8 >, size: size_t ) throws
     
-    mutating func hasBytesAvailable() -> Bool
-    mutating func availableBytes() -> size_t
-    mutating func seek( offset: ssize_t ) throws
-    mutating func read( size: size_t ) throws -> [ UInt8 ]
-    mutating func readAll() throws -> [ UInt8 ]
-    mutating func readUInt8() throws -> UInt8
-    mutating func readInt8() throws -> Int8
-    mutating func readUInt16( endianness: Endianness ) throws -> UInt16
-    mutating func readInt16( endianness: Endianness ) throws -> Int16
-    mutating func readUInt32( endianness: Endianness ) throws -> UInt32
-    mutating func readInt32( endianness: Endianness ) throws -> Int32
-    mutating func readUInt64( endianness: Endianness ) throws -> UInt64
-    mutating func readInt64( endianness: Endianness ) throws -> Int64
-    mutating func readString( length: size_t, encoding: String.Encoding ) throws -> String?
-    mutating func readNULLTerminatedString( encoding: String.Encoding ) throws -> String?
+    func hasBytesAvailable() -> Bool
+    func availableBytes() -> size_t
+    func read( size: size_t ) throws -> [ UInt8 ]
+    func readAll() throws -> [ UInt8 ]
+    func readUInt8() throws -> UInt8
+    func readInt8() throws -> Int8
+    func readUInt16( endianness: Endianness ) throws -> UInt16
+    func readInt16( endianness: Endianness ) throws -> Int16
+    func readUInt32( endianness: Endianness ) throws -> UInt32
+    func readInt32( endianness: Endianness ) throws -> Int32
+    func readUInt64( endianness: Endianness ) throws -> UInt64
+    func readInt64( endianness: Endianness ) throws -> Int64
+    func readString( length: size_t, encoding: String.Encoding ) throws -> String?
+    func readNULLTerminatedString( encoding: String.Encoding ) throws -> String?
 }
 
 public extension BinaryStream
 {
-    mutating func hasBytesAvailable() -> Bool
+    func hasBytesAvailable() -> Bool
     {
         self.availableBytes() > 0
     }
     
-    mutating func availableBytes() -> size_t
+    func availableBytes() -> size_t
     {
         do
         {
             let current = self.tell()
             
-            try self.seek( offset: 0, direction: .end )
+            try self.seek( offset: 0, from: .end )
             
             let end = self.tell()
             
-            try self.seek( offset: current, direction: .begin )
+            try self.seek( offset: current, from: .begin )
             
             return end - current
         }
@@ -87,12 +86,7 @@ public extension BinaryStream
         }
     }
     
-    mutating func seek( offset: ssize_t ) throws
-    {
-        try self.seek( offset: offset, direction: .current )
-    }
-    
-    mutating func read( size: size_t ) throws -> [ UInt8 ]
+    func read( size: size_t ) throws -> [ UInt8 ]
     {
         if size == 0
         {
@@ -111,12 +105,12 @@ public extension BinaryStream
         return buffer.toArray()
     }
     
-    mutating func readAll() throws -> [ UInt8 ]
+    func readAll() throws -> [ UInt8 ]
     {
         try self.read( size: self.availableBytes() )
     }
     
-    mutating func readUInt8() throws -> UInt8
+    func readUInt8() throws -> UInt8
     {
         var n: UInt8 = 0
         
@@ -128,12 +122,12 @@ public extension BinaryStream
         return n
     }
     
-    mutating func readInt8() throws -> Int8
+    func readInt8() throws -> Int8
     {
         try Int8( bitPattern: self.readUInt8() )
     }
     
-    mutating func readUInt16( endianness: Endianness ) throws -> UInt16
+    func readUInt16( endianness: Endianness ) throws -> UInt16
     {
         let buffer = UnsafeMutableBufferPointer< UInt8 >.allocate( capacity: MemoryLayout< UInt16 >.size )
         
@@ -145,12 +139,12 @@ public extension BinaryStream
         return UInt16( bitPattern: n1 | n2 )
     }
     
-    mutating func readInt16( endianness: Endianness ) throws -> Int16
+    func readInt16( endianness: Endianness ) throws -> Int16
     {
         try Int16( bitPattern: self.readUInt16( endianness: endianness ) )
     }
     
-    mutating func readUInt32( endianness: Endianness ) throws -> UInt32
+    func readUInt32( endianness: Endianness ) throws -> UInt32
     {
         let buffer = UnsafeMutableBufferPointer< UInt8 >.allocate( capacity: MemoryLayout< UInt32 >.size )
         
@@ -164,12 +158,12 @@ public extension BinaryStream
         return UInt32( bitPattern: n1 | n2 | n3 | n4 )
     }
     
-    mutating func readInt32( endianness: Endianness ) throws -> Int32
+    func readInt32( endianness: Endianness ) throws -> Int32
     {
         try Int32( bitPattern: self.readUInt32( endianness: endianness ) )
     }
     
-    mutating func readUInt64( endianness: Endianness ) throws -> UInt64
+    func readUInt64( endianness: Endianness ) throws -> UInt64
     {
         let buffer = UnsafeMutableBufferPointer< UInt8 >.allocate( capacity: MemoryLayout< UInt64 >.size )
         
@@ -187,17 +181,17 @@ public extension BinaryStream
         return UInt64( bitPattern: n1 | n2 | n3 | n4 | n5 | n6 | n7 | n8 )
     }
     
-    mutating func readInt64( endianness: Endianness ) throws -> Int64
+    func readInt64( endianness: Endianness ) throws -> Int64
     {
         try Int64( bitPattern: self.readUInt64( endianness: endianness ) )
     }
     
-    mutating func readString( length: size_t, encoding: String.Encoding ) throws -> String?
+    func readString( length: size_t, encoding: String.Encoding ) throws -> String?
     {
         return String( bytes: try self.read( size: length ), encoding: encoding )
     }
     
-    mutating func readNULLTerminatedString( encoding: String.Encoding ) throws -> String?
+    func readNULLTerminatedString( encoding: String.Encoding ) throws -> String?
     {
         var bytes = [ UInt8 ]()
         
