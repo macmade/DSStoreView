@@ -28,7 +28,7 @@ public class RootBlock
 {
     public private( set ) var blocks      = [ ( offset: UInt32, size: UInt32 ) ]()
     public private( set ) var directories = [ ( name: String, id: UInt32 ) ]()
-    public private( set ) var freeList    = [ UInt32 : [ UInt32 ] ]()
+    public private( set ) var freeList    = [ [ UInt32 ] ]()
     
     public init( stream: BinaryStream, header: Header ) throws
     {
@@ -66,10 +66,9 @@ public class RootBlock
     
     private func readFreeList( stream: BinaryStream ) throws
     {
-        for i in 0 ..< 32
+        for _ in 0 ..< 32
         {
             let n      = try stream.readUInt32( endianness: .big )
-            let key    = UInt32( pow( Double( 2 ), Double( i ) ) )
             var values = [ UInt32 ]()
             
             for _ in 0 ..< n
@@ -77,7 +76,7 @@ public class RootBlock
                 values.append( try stream.readUInt32( endianness: .big ) )
             }
             
-            self.freeList[ key ] = values
+            self.freeList.append( values )
         }
     }
 }
