@@ -24,30 +24,35 @@
 
 import Foundation
 
-public class DSStore
+public class MasterBlock
 {
-    public private( set ) var header:      Header
-    public private( set ) var allocator:   Allocator
-    public private( set ) var directories: [ MasterBlock ] = []
-    
-    public convenience init?( path: String ) throws
+    public init( stream: BinaryStream, id: UInt32, allocator: Allocator ) throws
     {
-        try self.init( url: URL( fileURLWithPath: path ) )
-    }
-    
-    public init?( url: URL ) throws
-    {
-        guard let stream = BinaryFileStream( url: url ) else
+        if id >= allocator.blocks.count || id > Int.max
         {
-            return nil
+            throw Error( message: "Invalid directory ID" )
         }
         
-        self.header    = try Header( stream: stream )
-        self.allocator = try Allocator( stream: stream, header: self.header )
+        let ( offset, size ) = allocator.blocks[ Int( id ) ]
         
-        for directory in self.allocator.directories
-        {
-            self.directories.append( try MasterBlock( stream: stream, id: directory.id, allocator: self.allocator ) )
-        }
+        NSLog( "Size:        0x%04X", size )
+        
+        try stream.seek( offset: size_t( offset + 4 ), from: .begin )
+        
+        let dataID      = try stream.readUInt32( endianness: .big )
+        let levels      = try stream.readUInt32( endianness: .big )
+        let recordCount = try stream.readUInt32( endianness: .big )
+        let blockCount  = try stream.readUInt32( endianness: .big )
+        let _           = try stream.readUInt32( endianness: .big )
+        
+        NSLog( "Data ID:     0x%04X", dataID )
+        NSLog( "Levels:      0x%04X", levels )
+        NSLog( "Records:     0x%04X", recordCount )
+        NSLog( "Blocks:      0x%04X", blockCount )
+        
+        let ( dataOffset, dataSize ) = allocator.blocks[ Int( dataID ) ]
+        
+        NSLog( "Data offset: 0x%04X", dataOffset )
+        NSLog( "Data size:   0x%04X", dataSize )
     }
 }

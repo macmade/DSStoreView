@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class RootBlock
+public class Allocator
 {
     public private( set ) var blocks      = [ ( offset: UInt32, size: UInt32 ) ]()
     public private( set ) var directories = [ ( name: String, id: UInt32 ) ]()
@@ -40,7 +40,7 @@ public class RootBlock
         
         for _ in 0 ..< n
         {
-            self.blocks.append( DSStore.decodeOffsetAndSize( try stream.readUInt32( endianness: .big ) ) )
+            self.blocks.append( Allocator.decodeOffsetAndSize( try stream.readUInt32( endianness: .big ) ) )
         }
         
         let remaining = 256 - ( n % 256 )
@@ -78,5 +78,13 @@ public class RootBlock
             
             self.freeList.append( values )
         }
+    }
+    
+    public class func decodeOffsetAndSize( _ value: UInt32 ) -> ( offset: UInt32, size: UInt32 )
+    {
+        let offset: UInt32 = value & ~0x1F
+        let size:   UInt32 = 1 << ( value & 0x1F )
+        
+        return ( offset: offset, size: size )
     }
 }

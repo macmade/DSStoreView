@@ -24,30 +24,12 @@
 
 import Foundation
 
-public class DSStore
+public class Error: Swift.Error
 {
-    public private( set ) var header:      Header
-    public private( set ) var allocator:   Allocator
-    public private( set ) var directories: [ MasterBlock ] = []
+    private var message: String
     
-    public convenience init?( path: String ) throws
+    init( message: String )
     {
-        try self.init( url: URL( fileURLWithPath: path ) )
-    }
-    
-    public init?( url: URL ) throws
-    {
-        guard let stream = BinaryFileStream( url: url ) else
-        {
-            return nil
-        }
-        
-        self.header    = try Header( stream: stream )
-        self.allocator = try Allocator( stream: stream, header: self.header )
-        
-        for directory in self.allocator.directories
-        {
-            self.directories.append( try MasterBlock( stream: stream, id: directory.id, allocator: self.allocator ) )
-        }
+        self.message = message
     }
 }

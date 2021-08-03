@@ -41,5 +41,20 @@ public class Header
         self.offset1    = try stream.readUInt32( endianness: .big )
         self.size       = try stream.readUInt32( endianness: .big )
         self.offset2    = try stream.readUInt32( endianness: .big )
+        
+        guard self.alignement == 0x01, self.magic == 0x42756431 else
+        {
+            throw Error( message: "Invalid header magic bytes" )
+        }
+        
+        guard self.offset1 == self.offset2, self.offset1 > 0 else
+        {
+            throw Error( message: "Invalid allocator offset" )
+        }
+        
+        guard self.size > 0 else
+        {
+            throw Error( message: "Invalid allocator size" )
+        }
     }
 }
