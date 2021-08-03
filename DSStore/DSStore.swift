@@ -24,6 +24,14 @@
 
 import Foundation
 
+/*
+ * Reference:
+ *  - https://formats.kaitai.io/ds_store/index.html
+ *  - https://wiki.mozilla.org/DS_Store_File_Format
+ *  - https://0day.work/parsing-the-ds_store-file-format/
+ *  - https://metacpan.org/dist/Mac-Finder-DSStore/view/DSStoreFormat.pod
+ */
+
 public class DSStore
 {
     public private( set ) var header:      Header
