@@ -27,11 +27,13 @@ import DSStore
 
 do
 {
-    guard let _ = try DSStore( path: "/Users/macmade/Desktop/.DS_Store" ) else
+    guard let file = try DSStore( path: "/Users/macmade/Desktop/.DS_Store" ) else
     {
         print( "Error..." )
         exit( -1 )
     }
+    
+    print( file )
 }
 catch let error
 {

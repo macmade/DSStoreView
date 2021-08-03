@@ -26,35 +26,44 @@ import Foundation
 
 public class RootBlock
 {
-    public private( set ) var offsets = [ UInt32 ]()
-    public private( set ) var tables  = [ ( name: String, value: UInt32 ) ]()
+    public private( set ) var blocks      = [ ( offset: UInt32, size: UInt32 ) ]()
+    public private( set ) var directories = [ ( name: String, id: UInt32 ) ]()
     
-    public init( stream: BinaryStream, offset: size_t, size: size_t ) throws
+    public init( stream: BinaryStream, header: Header ) throws
     {
-        try stream.seek( offset: offset + 4, from: .begin )
+        try stream.seek( offset: size_t( header.offset1 ) + 4, from: .begin )
         
-        let offsetCount = try stream.readUInt32( endianness: .big )
+        let n = try stream.readUInt32( endianness: .big )
         
         try stream.seek( offset: 4, from: .current )
         
-        for _ in 0 ..< offsetCount
+        for _ in 0 ..< n
         {
-            self.offsets.append( try stream.readUInt32( endianness: .big ) )
+            self.blocks.append( DSStore.decodeOffsetAndSize( try stream.readUInt32( endianness: .big ) ) )
         }
         
-        let pos       = stream.tell()
-        let tocOffset = pos + ( -pos & 1023 ) + 12
+        let remaining = 256 - ( n % 256 )
         
-        try stream.seek( offset: tocOffset, from: .begin )
+        try stream.seek( offset: size_t( remaining * 4 ), from: .current )
         
-        let tocCount = try stream.readUInt32( endianness: .big )
+        try self.readDirectories( stream: stream )
+        try self.readFreeList( stream: stream )
+    }
+    
+    private func readDirectories( stream: BinaryStream ) throws
+    {
+        let n = try stream.readUInt32( endianness: .big )
         
-        for _ in 0 ..< tocCount
+        for _ in 0 ..< n
         {
-            let name  = try stream.readString( length: size_t( try stream.readUInt8() ), encoding: .utf8 ) ?? ""
-            let value = try stream.readUInt32( endianness: .big )
+            let name = try stream.readString( length: size_t( try stream.readUInt8() ), encoding: .utf8 ) ?? ""
+            let id   = try stream.readUInt32( endianness: .big )
             
-            self.tables.append( ( name: name, value: value ) )
+            self.directories.append( ( name: name, id: id ) )
         }
+    }
+    
+    private func readFreeList( stream: BinaryStream ) throws
+    {
     }
 }

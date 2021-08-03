@@ -58,19 +58,16 @@ public class DSStore
             throw NSError( title: "Cannot Read File", message: "Invalid root block size" )
         }
         
-        self.rootBlock = try RootBlock( stream: stream, offset: size_t( self.header.offset1 ), size: size_t( self.header.size ) )
+        self.rootBlock = try RootBlock( stream: stream, header: self.header )
         
-        for table in self.rootBlock.tables
+        for directory in self.rootBlock.directories
         {
-            if table.value >= self.rootBlock.offsets.count
+            if directory.id >= self.rootBlock.blocks.count || directory.id > Int.max
             {
                 throw NSError( title: "Cannot Read File", message: "Invalid TOC offset" )
             }
             
-            guard let ( offset, size ) = self.decodeOffsetAndSize( id: table.value ) else
-            {
-                throw NSError( title: "Cannot Read File", message: "Invalid TOC offset/size pair" )
-            }
+            let ( offset, size ) = self.rootBlock.blocks[ Int( directory.id ) ]
             
             NSLog( "Size:        0x%04X", size )
             
@@ -87,22 +84,11 @@ public class DSStore
             NSLog( "Records:     0x%04X", recordCount )
             NSLog( "Blocks:      0x%04X", blockCount )
             
-            let dataOffset = self.rootBlock.offsets[ Int( dataID ) ] & ~0x1F
-            let dataSize   = 1 << ( self.rootBlock.offsets[ Int( dataID ) ] & 0x1F )
+            let ( dataOffset, dataSize ) = self.rootBlock.blocks[ Int( dataID ) ]
             
             NSLog( "Data offset: 0x%04X", dataOffset )
             NSLog( "Data size:   0x%04X", dataSize )
         }
-    }
-    
-    public func decodeOffsetAndSize( id: UInt32 ) -> ( offset: UInt32, size: UInt32 )?
-    {
-        if id >= self.rootBlock.offsets.count || id >= Int.max
-        {
-            return nil
-        }
-        
-        return DSStore.decodeOffsetAndSize( self.rootBlock.offsets[ Int( id ) ] )
     }
     
     public class func decodeOffsetAndSize( _ value: UInt32 ) -> ( offset: UInt32, size: UInt32 )
