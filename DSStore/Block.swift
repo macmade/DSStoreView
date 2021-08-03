@@ -24,17 +24,44 @@
 
 import Foundation
 
-public class Error: Swift.Error
+public class Block
 {
-    private var message: String
+    public private( set ) var mode:     UInt32
+    public private( set ) var children: [ Block ]  = []
+    public private( set ) var records:  [ Record ] = []
     
-    init( message: String )
+    public init( stream: BinaryStream, id: UInt32, allocator: Allocator ) throws
     {
-        self.message = message
-    }
-    
-    public dynamic var localizedDescription: String
-    {
-        self.message
+        if id >= allocator.blocks.count || id > Int.max
+        {
+            throw Error( message: "Invalid directory ID" )
+        }
+        
+        let ( offset, _ ) = allocator.blocks[ Int( id ) ]
+        
+        try stream.seek( offset: size_t( offset + 4 ), from: .begin )
+        
+        self.mode = try stream.readUInt32( endianness: .big )
+        let count = try stream.readUInt32( endianness: .big )
+        
+        if self.mode == 0
+        {
+            for _ in 0 ..< count
+            {
+                self.records.append( try Record( stream: stream ) )
+            }
+        }
+        else
+        {
+            for _ in 0 ..< count
+            {
+                let blockID = try stream.readUInt32( endianness: .big )
+                let pos     = stream.tell()
+                
+                self.children.append( try Block( stream: stream, id: blockID, allocator: allocator ) )
+                try stream.seek( offset: pos, from: .begin )
+                self.records.append( try Record( stream: stream ) )
+            }
+        }
     }
 }

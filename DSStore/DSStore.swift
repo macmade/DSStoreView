@@ -30,16 +30,16 @@ public class DSStore
     public private( set ) var allocator:   Allocator
     public private( set ) var directories: [ MasterBlock ] = []
     
-    public convenience init?( path: String ) throws
+    public convenience init( path: String ) throws
     {
         try self.init( url: URL( fileURLWithPath: path ) )
     }
     
-    public init?( url: URL ) throws
+    public init( url: URL ) throws
     {
         guard let stream = BinaryFileStream( url: url ) else
         {
-            return nil
+            throw Error( message: "Cannot read file: \( url.path )" )
         }
         
         self.header    = try Header( stream: stream )

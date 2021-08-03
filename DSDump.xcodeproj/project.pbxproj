@@ -23,6 +23,8 @@
 		05B48AB326B9B365000F53E5 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B48AB226B9B365000F53E5 /* Header.swift */; };
 		05B48ADB26B9D0C9000F53E5 /* MasterBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B48ADA26B9D0C9000F53E5 /* MasterBlock.swift */; };
 		05B48ADD26B9D17D000F53E5 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B48ADC26B9D17D000F53E5 /* Error.swift */; };
+		05B48ADF26B9E042000F53E5 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B48ADE26B9E042000F53E5 /* Block.swift */; };
+		05B48AE126B9E45B000F53E5 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B48AE026B9E45B000F53E5 /* Record.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		05B48AB226B9B365000F53E5 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		05B48ADA26B9D0C9000F53E5 /* MasterBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterBlock.swift; sourceTree = "<group>"; };
 		05B48ADC26B9D17D000F53E5 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		05B48ADE26B9E042000F53E5 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		05B48AE026B9E45B000F53E5 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +190,8 @@
 				05B48AB226B9B365000F53E5 /* Header.swift */,
 				05B48A9926B98DB0000F53E5 /* Allocator.swift */,
 				05B48ADA26B9D0C9000F53E5 /* MasterBlock.swift */,
+				05B48ADE26B9E042000F53E5 /* Block.swift */,
+				05B48AE026B9E45B000F53E5 /* Record.swift */,
 			);
 			path = DSStore;
 			sourceTree = "<group>";
@@ -453,6 +459,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				05B48AB326B9B365000F53E5 /* Header.swift in Sources */,
+				05B48ADF26B9E042000F53E5 /* Block.swift in Sources */,
+				05B48AE126B9E45B000F53E5 /* Record.swift in Sources */,
 				054C88FB26B89D890006A91C /* BinaryFileStream.swift in Sources */,
 				05B48A9A26B98DB0000F53E5 /* Allocator.swift in Sources */,
 				054C88FE26B89D890006A91C /* BinaryDataStream.swift in Sources */,
