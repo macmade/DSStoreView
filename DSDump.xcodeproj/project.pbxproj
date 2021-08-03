@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		054C88C526B8838F0006A91C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88C426B8838F0006A91C /* main.swift */; };
+		054C88FA26B89D890006A91C /* UnsafeMutableBufferPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88E426B88ED60006A91C /* UnsafeMutableBufferPointer.swift */; };
+		054C88FB26B89D890006A91C /* BinaryFileStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88CB26B884420006A91C /* BinaryFileStream.swift */; };
+		054C88FC26B89D890006A91C /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88EB26B89A9B0006A91C /* NSError.swift */; };
+		054C88FD26B89D890006A91C /* BinaryStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88CC26B884420006A91C /* BinaryStream.swift */; };
+		054C88FE26B89D890006A91C /* BinaryDataStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88CD26B884420006A91C /* BinaryDataStream.swift */; };
+		054C890026B89D9A0006A91C /* libDSStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 054C88F126B89D780006A91C /* libDSStore.a */; };
+		054C891726B89DE00006A91C /* Test-BinaryDataStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C891626B89DE00006A91C /* Test-BinaryDataStream.swift */; };
+		054C891926B89DE00006A91C /* libDSStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 054C88F126B89D780006A91C /* libDSStore.a */; };
+		054C892026B96EA80006A91C /* Test-UnsafeMutableBufferPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C891F26B96EA80006A91C /* Test-UnsafeMutableBufferPointer.swift */; };
+		054C893526B9741B0006A91C /* Test-BinaryFileStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C893426B9741B0006A91C /* Test-BinaryFileStream.swift */; };
+		054C893726B9761D0006A91C /* DSStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C893626B9761D0006A91C /* DSStore.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		054C891A26B89DE00006A91C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 054C88B926B8838F0006A91C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 054C88F026B89D780006A91C;
+			remoteInfo = DSStore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		054C88BF26B8838F0006A91C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		054C88C126B8838F0006A91C /* DSDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DSDump; sourceTree = BUILT_PRODUCTS_DIR; };
+		054C88C426B8838F0006A91C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		054C88CB26B884420006A91C /* BinaryFileStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFileStream.swift; sourceTree = "<group>"; };
+		054C88CC26B884420006A91C /* BinaryStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryStream.swift; sourceTree = "<group>"; };
+		054C88CD26B884420006A91C /* BinaryDataStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryDataStream.swift; sourceTree = "<group>"; };
+		054C88E426B88ED60006A91C /* UnsafeMutableBufferPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeMutableBufferPointer.swift; sourceTree = "<group>"; };
+		054C88EB26B89A9B0006A91C /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
+		054C88F126B89D780006A91C /* libDSStore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDSStore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		054C891426B89DE00006A91C /* DSStore-Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DSStore-Test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		054C891626B89DE00006A91C /* Test-BinaryDataStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-BinaryDataStream.swift"; sourceTree = "<group>"; };
+		054C891826B89DE00006A91C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		054C891F26B96EA80006A91C /* Test-UnsafeMutableBufferPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-UnsafeMutableBufferPointer.swift"; sourceTree = "<group>"; };
+		054C893426B9741B0006A91C /* Test-BinaryFileStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-BinaryFileStream.swift"; sourceTree = "<group>"; };
+		054C893626B9761D0006A91C /* DSStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSStore.swift; sourceTree = "<group>"; };
+		054C893826B9786C0006A91C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		054C893926B9786C0006A91C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		054C893B26B979510006A91C /* Release - ccache.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release - ccache.xcconfig"; sourceTree = "<group>"; };
+		054C893C26B979510006A91C /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		054C893D26B979510006A91C /* Debug - ccache.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - ccache.xcconfig"; sourceTree = "<group>"; };
+		054C893E26B979510006A91C /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		054C893F26B979510006A91C /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		054C894026B979510006A91C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		054C894126B979510006A91C /* Release - Library.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Release - Library.xcconfig"; sourceTree = "<group>"; };
+		054C894326B979510006A91C /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
+		054C894426B979510006A91C /* Architectures.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Architectures.xcconfig; sourceTree = "<group>"; };
+		054C894626B979510006A91C /* Issues.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Issues.xcconfig; sourceTree = "<group>"; };
+		054C894826B979510006A91C /* Apple-APIs.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Apple-APIs.xcconfig"; sourceTree = "<group>"; };
+		054C894926B979510006A91C /* Generic-Issues.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Generic-Issues.xcconfig"; sourceTree = "<group>"; };
+		054C894A26B979510006A91C /* Security.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Security.xcconfig; sourceTree = "<group>"; };
+		054C894B26B979510006A91C /* Objective-C.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C.xcconfig"; sourceTree = "<group>"; };
+		054C894C26B979510006A91C /* Analysis-Policy.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Analysis-Policy.xcconfig"; sourceTree = "<group>"; };
+		054C894D26B979510006A91C /* Deployment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Deployment.xcconfig; sourceTree = "<group>"; };
+		054C894E26B979510006A91C /* Build-Options.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Build-Options.xcconfig"; sourceTree = "<group>"; };
+		054C894F26B979510006A91C /* Swift-Compiler.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Swift-Compiler.xcconfig"; sourceTree = "<group>"; };
+		054C895026B979510006A91C /* Static-Analyzer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Static-Analyzer.xcconfig"; sourceTree = "<group>"; };
+		054C895226B979510006A91C /* Warnings-Policies.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Warnings-Policies.xcconfig"; sourceTree = "<group>"; };
+		054C895326B979510006A91C /* Code-Generation.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Code-Generation.xcconfig"; sourceTree = "<group>"; };
+		054C895426B979510006A91C /* Language.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Language.xcconfig; sourceTree = "<group>"; };
+		054C895526B979510006A91C /* General.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = General.xcconfig; sourceTree = "<group>"; };
+		054C895626B979510006A91C /* Search-Paths.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Search-Paths.xcconfig"; sourceTree = "<group>"; };
+		054C895726B979510006A91C /* Apple-LLVM.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Apple-LLVM.xcconfig"; sourceTree = "<group>"; };
+		054C895A26B979510006A91C /* Modules.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Modules.xcconfig; sourceTree = "<group>"; };
+		054C895B26B979510006A91C /* Objective-C.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C.xcconfig"; sourceTree = "<group>"; };
+		054C895C26B979510006A91C /* C++.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "C++.xcconfig"; sourceTree = "<group>"; };
+		054C895D26B979510006A91C /* Code-Generation.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Code-Generation.xcconfig"; sourceTree = "<group>"; };
+		054C895E26B979510006A91C /* Address-Sanitizer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Address-Sanitizer.xcconfig"; sourceTree = "<group>"; };
+		054C895F26B979510006A91C /* Language.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Language.xcconfig; sourceTree = "<group>"; };
+		054C896026B979510006A91C /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		054C896126B979510006A91C /* Undefined-Behavior-Sanitizer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Undefined-Behavior-Sanitizer.xcconfig"; sourceTree = "<group>"; };
+		054C896226B979510006A91C /* Warning-Policies.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Warning-Policies.xcconfig"; sourceTree = "<group>"; };
+		054C896426B979510006A91C /* Objective-C-ARC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C-ARC.xcconfig"; sourceTree = "<group>"; };
+		054C896526B979510006A91C /* Objective-C.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Objective-C.xcconfig"; sourceTree = "<group>"; };
+		054C896626B979510006A91C /* C++.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "C++.xcconfig"; sourceTree = "<group>"; };
+		054C896726B979510006A91C /* All-Languages.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "All-Languages.xcconfig"; sourceTree = "<group>"; };
+		054C896826B979510006A91C /* Preprocessing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Preprocessing.xcconfig; sourceTree = "<group>"; };
+		054C896926B979510006A91C /* Debug - Library.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - Library.xcconfig"; sourceTree = "<group>"; };
+		054C896A26B979510006A91C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		054C896C26B979510006A91C /* ccache-config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ccache-config.sh"; sourceTree = "<group>"; };
+		054C896D26B979510006A91C /* ccache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ccache.sh; sourceTree = "<group>"; };
+		054C896E26B979510006A91C /* Debug - zld.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - zld.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		054C88BE26B8838F0006A91C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				054C890026B89D9A0006A91C /* libDSStore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		054C88EF26B89D780006A91C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		054C891126B89DE00006A91C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				054C891926B89DE00006A91C /* libDSStore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		054C88B826B8838F0006A91C = {
+			isa = PBXGroup;
+			children = (
+				054C893826B9786C0006A91C /* LICENSE */,
+				054C893926B9786C0006A91C /* README.md */,
+				054C893A26B979510006A91C /* xcconfig */,
+				054C88C326B8838F0006A91C /* DSDump */,
+				054C88F226B89D780006A91C /* DSStore */,
+				054C891526B89DE00006A91C /* DSStore-Test */,
+				054C88C226B8838F0006A91C /* Products */,
+				054C88FF26B89D9A0006A91C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		054C88C226B8838F0006A91C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				054C88C126B8838F0006A91C /* DSDump */,
+				054C88F126B89D780006A91C /* libDSStore.a */,
+				054C891426B89DE00006A91C /* DSStore-Test.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		054C88C326B8838F0006A91C /* DSDump */ = {
+			isa = PBXGroup;
+			children = (
+				054C88C426B8838F0006A91C /* main.swift */,
+			);
+			path = DSDump;
+			sourceTree = "<group>";
+		};
+		054C88F226B89D780006A91C /* DSStore */ = {
+			isa = PBXGroup;
+			children = (
+				054C88CD26B884420006A91C /* BinaryDataStream.swift */,
+				054C88CB26B884420006A91C /* BinaryFileStream.swift */,
+				054C88CC26B884420006A91C /* BinaryStream.swift */,
+				054C88E426B88ED60006A91C /* UnsafeMutableBufferPointer.swift */,
+				054C88EB26B89A9B0006A91C /* NSError.swift */,
+				054C893626B9761D0006A91C /* DSStore.swift */,
+			);
+			path = DSStore;
+			sourceTree = "<group>";
+		};
+		054C88FF26B89D9A0006A91C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		054C891526B89DE00006A91C /* DSStore-Test */ = {
+			isa = PBXGroup;
+			children = (
+				054C891626B89DE00006A91C /* Test-BinaryDataStream.swift */,
+				054C893426B9741B0006A91C /* Test-BinaryFileStream.swift */,
+				054C891F26B96EA80006A91C /* Test-UnsafeMutableBufferPointer.swift */,
+				054C891826B89DE00006A91C /* Info.plist */,
+			);
+			path = "DSStore-Test";
+			sourceTree = "<group>";
+		};
+		054C893A26B979510006A91C /* xcconfig */ = {
+			isa = PBXGroup;
+			children = (
+				054C893B26B979510006A91C /* Release - ccache.xcconfig */,
+				054C893C26B979510006A91C /* Common.xcconfig */,
+				054C893D26B979510006A91C /* Debug - ccache.xcconfig */,
+				054C893E26B979510006A91C /* Debug.xcconfig */,
+				054C893F26B979510006A91C /* Release.xcconfig */,
+				054C894026B979510006A91C /* README.md */,
+				054C894126B979510006A91C /* Release - Library.xcconfig */,
+				054C894226B979510006A91C /* Common */,
+				054C896926B979510006A91C /* Debug - Library.xcconfig */,
+				054C896A26B979510006A91C /* .gitignore */,
+				054C896B26B979510006A91C /* Scripts */,
+				054C896E26B979510006A91C /* Debug - zld.xcconfig */,
+			);
+			name = xcconfig;
+			path = Submodules/xcconfig;
+			sourceTree = "<group>";
+		};
+		054C894226B979510006A91C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				054C894326B979510006A91C /* Signing.xcconfig */,
+				054C894426B979510006A91C /* Architectures.xcconfig */,
+				054C894526B979510006A91C /* Static-Analyzer */,
+				054C894D26B979510006A91C /* Deployment.xcconfig */,
+				054C894E26B979510006A91C /* Build-Options.xcconfig */,
+				054C894F26B979510006A91C /* Swift-Compiler.xcconfig */,
+				054C895026B979510006A91C /* Static-Analyzer.xcconfig */,
+				054C895126B979510006A91C /* Swift-Compiler */,
+				054C895626B979510006A91C /* Search-Paths.xcconfig */,
+				054C895726B979510006A91C /* Apple-LLVM.xcconfig */,
+				054C895826B979510006A91C /* Apple-LLVM */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		054C894526B979510006A91C /* Static-Analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				054C894626B979510006A91C /* Issues.xcconfig */,
+				054C894726B979510006A91C /* Issues */,
+			);
+			path = "Static-Analyzer";
+			sourceTree = "<group>";
+		};
+		054C894726B979510006A91C /* Issues */ = {
+			isa = PBXGroup;
+			children = (
+				054C894826B979510006A91C /* Apple-APIs.xcconfig */,
+				054C894926B979510006A91C /* Generic-Issues.xcconfig */,
+				054C894A26B979510006A91C /* Security.xcconfig */,
+				054C894B26B979510006A91C /* Objective-C.xcconfig */,
+				054C894C26B979510006A91C /* Analysis-Policy.xcconfig */,
+			);
+			path = Issues;
+			sourceTree = "<group>";
+		};
+		054C895126B979510006A91C /* Swift-Compiler */ = {
+			isa = PBXGroup;
+			children = (
+				054C895226B979510006A91C /* Warnings-Policies.xcconfig */,
+				054C895326B979510006A91C /* Code-Generation.xcconfig */,
+				054C895426B979510006A91C /* Language.xcconfig */,
+				054C895526B979510006A91C /* General.xcconfig */,
+			);
+			path = "Swift-Compiler";
+			sourceTree = "<group>";
+		};
+		054C895826B979510006A91C /* Apple-LLVM */ = {
+			isa = PBXGroup;
+			children = (
+				054C895926B979510006A91C /* Language */,
+				054C895D26B979510006A91C /* Code-Generation.xcconfig */,
+				054C895E26B979510006A91C /* Address-Sanitizer.xcconfig */,
+				054C895F26B979510006A91C /* Language.xcconfig */,
+				054C896026B979510006A91C /* Warnings.xcconfig */,
+				054C896126B979510006A91C /* Undefined-Behavior-Sanitizer.xcconfig */,
+				054C896226B979510006A91C /* Warning-Policies.xcconfig */,
+				054C896326B979510006A91C /* Warnings */,
+				054C896826B979510006A91C /* Preprocessing.xcconfig */,
+			);
+			path = "Apple-LLVM";
+			sourceTree = "<group>";
+		};
+		054C895926B979510006A91C /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				054C895A26B979510006A91C /* Modules.xcconfig */,
+				054C895B26B979510006A91C /* Objective-C.xcconfig */,
+				054C895C26B979510006A91C /* C++.xcconfig */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
+		054C896326B979510006A91C /* Warnings */ = {
+			isa = PBXGroup;
+			children = (
+				054C896426B979510006A91C /* Objective-C-ARC.xcconfig */,
+				054C896526B979510006A91C /* Objective-C.xcconfig */,
+				054C896626B979510006A91C /* C++.xcconfig */,
+				054C896726B979510006A91C /* All-Languages.xcconfig */,
+			);
+			path = Warnings;
+			sourceTree = "<group>";
+		};
+		054C896B26B979510006A91C /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				054C896C26B979510006A91C /* ccache-config.sh */,
+				054C896D26B979510006A91C /* ccache.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		054C88ED26B89D780006A91C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		054C88C026B8838F0006A91C /* DSDump */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 054C88C826B8838F0006A91C /* Build configuration list for PBXNativeTarget "DSDump" */;
+			buildPhases = (
+				054C88BD26B8838F0006A91C /* Sources */,
+				054C88BE26B8838F0006A91C /* Frameworks */,
+				054C88BF26B8838F0006A91C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DSDump;
+			productName = DSDump;
+			productReference = 054C88C126B8838F0006A91C /* DSDump */;
+			productType = "com.apple.product-type.tool";
+		};
+		054C88F026B89D780006A91C /* DSStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 054C88F726B89D780006A91C /* Build configuration list for PBXNativeTarget "DSStore" */;
+			buildPhases = (
+				054C88ED26B89D780006A91C /* Headers */,
+				054C88EE26B89D780006A91C /* Sources */,
+				054C88EF26B89D780006A91C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DSStore;
+			productName = DSStore;
+			productReference = 054C88F126B89D780006A91C /* libDSStore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		054C891326B89DE00006A91C /* DSStore-Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 054C891C26B89DE00006A91C /* Build configuration list for PBXNativeTarget "DSStore-Test" */;
+			buildPhases = (
+				054C891026B89DE00006A91C /* Sources */,
+				054C891126B89DE00006A91C /* Frameworks */,
+				054C891226B89DE00006A91C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				054C891B26B89DE00006A91C /* PBXTargetDependency */,
+			);
+			name = "DSStore-Test";
+			productName = "DSStore-Test";
+			productReference = 054C891426B89DE00006A91C /* DSStore-Test.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		054C88B926B8838F0006A91C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					054C88C026B8838F0006A91C = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					054C88F026B89D780006A91C = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					054C891326B89DE00006A91C = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 054C88BC26B8838F0006A91C /* Build configuration list for PBXProject "DSDump" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 054C88B826B8838F0006A91C;
+			productRefGroup = 054C88C226B8838F0006A91C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				054C88C026B8838F0006A91C /* DSDump */,
+				054C88F026B89D780006A91C /* DSStore */,
+				054C891326B89DE00006A91C /* DSStore-Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		054C891226B89DE00006A91C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		054C88BD26B8838F0006A91C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				054C88C526B8838F0006A91C /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		054C88EE26B89D780006A91C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				054C88FB26B89D890006A91C /* BinaryFileStream.swift in Sources */,
+				054C88FE26B89D890006A91C /* BinaryDataStream.swift in Sources */,
+				054C893726B9761D0006A91C /* DSStore.swift in Sources */,
+				054C88FA26B89D890006A91C /* UnsafeMutableBufferPointer.swift in Sources */,
+				054C88FD26B89D890006A91C /* BinaryStream.swift in Sources */,
+				054C88FC26B89D890006A91C /* NSError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		054C891026B89DE00006A91C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				054C892026B96EA80006A91C /* Test-UnsafeMutableBufferPointer.swift in Sources */,
+				054C891726B89DE00006A91C /* Test-BinaryDataStream.swift in Sources */,
+				054C893526B9741B0006A91C /* Test-BinaryFileStream.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		054C891B26B89DE00006A91C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 054C88F026B89D780006A91C /* DSStore */;
+			targetProxy = 054C891A26B89DE00006A91C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		054C88C626B8838F0006A91C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 054C893E26B979510006A91C /* Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		054C88C726B8838F0006A91C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 054C893F26B979510006A91C /* Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		054C88C926B8838F0006A91C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		054C88CA26B8838F0006A91C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		054C88F826B89D780006A91C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 054C896926B979510006A91C /* Debug - Library.xcconfig */;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		054C88F926B89D780006A91C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 054C894126B979510006A91C /* Release - Library.xcconfig */;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		054C891D26B89DE00006A91C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "DSStore-Test/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.DSStore-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		054C891E26B89DE00006A91C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "DSStore-Test/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.DSStore-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		054C88BC26B8838F0006A91C /* Build configuration list for PBXProject "DSDump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				054C88C626B8838F0006A91C /* Debug */,
+				054C88C726B8838F0006A91C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		054C88C826B8838F0006A91C /* Build configuration list for PBXNativeTarget "DSDump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				054C88C926B8838F0006A91C /* Debug */,
+				054C88CA26B8838F0006A91C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		054C88F726B89D780006A91C /* Build configuration list for PBXNativeTarget "DSStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				054C88F826B89D780006A91C /* Debug */,
+				054C88F926B89D780006A91C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		054C891C26B89DE00006A91C /* Build configuration list for PBXNativeTarget "DSStore-Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				054C891D26B89DE00006A91C /* Debug */,
+				054C891E26B89DE00006A91C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 054C88B926B8838F0006A91C /* Project object */;
+}
