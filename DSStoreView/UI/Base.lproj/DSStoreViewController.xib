@@ -7,6 +7,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DSStoreViewController" customModule="DSStoreView" customModuleProvider="target">
             <connections>
+                <outlet property="blocksController" destination="g7c-Xt-WYS" id="N4W-8x-JkZ"/>
+                <outlet property="blocksOutlineView" destination="V1Q-qk-7F3" id="FTl-Tg-TzP"/>
+                <outlet property="recordsController" destination="yFg-0o-6oG" id="i24-eS-nCN"/>
+                <outlet property="recordsTableView" destination="CUF-aU-gDb" id="vjO-ie-reV"/>
                 <outlet property="view" destination="c22-O7-iKe" id="mLq-Vh-DPA"/>
             </connections>
         </customObject>
@@ -200,6 +204,11 @@
                                                                         </prototypeCellViews>
                                                                     </tableColumn>
                                                                 </tableColumns>
+                                                                <connections>
+                                                                    <binding destination="g7c-Xt-WYS" name="content" keyPath="arrangedObjects" id="ptx-oa-NgP"/>
+                                                                    <binding destination="g7c-Xt-WYS" name="selectionIndexPaths" keyPath="selectionIndexPaths" previousBinding="ptx-oa-NgP" id="9wA-1u-6n0"/>
+                                                                    <binding destination="g7c-Xt-WYS" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="9wA-1u-6n0" id="Lhn-uy-ZFL"/>
+                                                                </connections>
                                                             </outlineView>
                                                         </subviews>
                                                     </clipView>
@@ -388,6 +397,11 @@
                                                                         </prototypeCellViews>
                                                                     </tableColumn>
                                                                 </tableColumns>
+                                                                <connections>
+                                                                    <binding destination="yFg-0o-6oG" name="content" keyPath="arrangedObjects" id="0vV-oN-oAa"/>
+                                                                    <binding destination="yFg-0o-6oG" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="0vV-oN-oAa" id="w4O-Up-X8U"/>
+                                                                    <binding destination="yFg-0o-6oG" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="w4O-Up-X8U" id="pTk-gM-z7q"/>
+                                                                </connections>
                                                             </tableView>
                                                         </subviews>
                                                     </clipView>
@@ -466,6 +480,8 @@
             </constraints>
             <point key="canvasLocation" x="202.5" y="232"/>
         </customView>
+        <arrayController selectsInsertedObjects="NO" avoidsEmptySelection="NO" clearsFilterPredicateOnInsertion="NO" automaticallyRearrangesObjects="YES" id="yFg-0o-6oG"/>
+        <treeController childrenKeyPath="children" avoidsEmptySelection="NO" selectsInsertedObjects="NO" id="g7c-Xt-WYS"/>
     </objects>
     <resources>
         <image name="NSCaution" width="32" height="32"/>

@@ -31,6 +31,11 @@ public class DSStoreViewController: NSViewController
     @objc public private( set ) dynamic var file:   DSStore?
     @objc public private( set ) dynamic var error:  NSError?
     
+    @IBOutlet private var blocksController:  NSTreeController!
+    @IBOutlet private var recordsController: NSArrayController!
+    @IBOutlet private var blocksOutlineView: NSOutlineView!
+    @IBOutlet private var recordsTableView:  NSTableView!
+    
     public init( folder: Folder )
     {
         self.folder = folder
