@@ -45,7 +45,54 @@ public class RecordValue: ValueTransformer
             return "--"
         }
         
-        print( record )
+        if record.dataType == .bool
+        {
+            return record.value as? Bool == true ? "True" : "False"
+        }
+        else if record.dataType == .long
+        {
+            return "\( record.value as? Int32 ?? 0 )"
+        }
+        else if record.dataType == .shor
+        {
+            return "\( record.value as? Int32 ?? 0 )"
+        }
+        else if record.dataType == .comp
+        {
+            return "\( record.value as? Int32 ?? 0 )"
+        }
+        else if record.dataType == .ustr
+        {
+            return record.value as? String ?? "--"
+        }
+        else if record.dataType == .type
+        {
+            guard let type = record.value as? UInt32 else
+            {
+                return "--"
+            }
+            
+            let c1 = type >> 24 & 0xFF
+            let c2 = type >> 16 & 0xFF
+            let c3 = type >>  8 & 0xFF
+            let c4 = type >>  0 & 0xFF
+            
+            return String(
+                format: "%c%c%c%c",
+                isprint( Int32( c1 ) ) == 1 ? c1 : ".",
+                isprint( Int32( c2 ) ) == 1 ? c2 : ".",
+                isprint( Int32( c3 ) ) == 1 ? c3 : ".",
+                isprint( Int32( c4 ) ) == 1 ? c4 : "."
+            )
+        }
+        else if record.dataType == .blob
+        {
+            return "--"
+        }
+        else if record.dataType == .dutc
+        {
+            return "--"
+        }
         
         return "--"
     }

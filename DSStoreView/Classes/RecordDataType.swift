@@ -45,8 +45,18 @@ public class RecordDataType: ValueTransformer
             return "--"
         }
         
-        print( record )
-        
-        return "--"
+        switch record.dataType
+        {
+            case .bool: return "BOOL"
+            case .long: return "LONG"
+            case .shor: return "SHOR"
+            case .type: return "TYPE"
+            case .comp: return "COMP"
+            case .dutc: return "DUTC"
+            case .blob: return "BLOB"
+            case .ustr: return "USTR"
+            
+            @unknown default: return "--"
+        }
     }
 }

@@ -26,9 +26,21 @@ import Foundation
 
 @objc public class Record: NSObject
 {
+    @objc public enum DataType: Int
+    {
+        case bool
+        case long
+        case shor
+        case type
+        case comp
+        case dutc
+        case blob
+        case ustr
+    }
+    
     @objc public private( set ) dynamic var name:     String
     @objc public private( set ) dynamic var type:     UInt32
-    @objc public private( set ) dynamic var dataType: String
+    @objc public private( set ) dynamic var dataType: DataType
     @objc public private( set ) dynamic var value:    Any?
     
     public init( stream: BinaryStream ) throws
@@ -48,42 +60,48 @@ import Foundation
             throw Error( message: "Invalid record data-type" )
         }
         
-        self.dataType = dataType
-        
-        if self.dataType == "bool"
+        if dataType == "bool"
         {
-            self.value = try stream.readUInt8() == 1
+            self.dataType = .bool
+            self.value    = try stream.readUInt8() == 1
         }
-        else if self.dataType == "long"
+        else if dataType == "long"
         {
-            self.value = try stream.readInt32( endianness: .big )
+            self.dataType = .long
+            self.value    = try stream.readInt32( endianness: .big )
         }
-        else if self.dataType == "shor"
+        else if dataType == "shor"
         {
-            self.value = try stream.readInt32( endianness: .big )
+            self.dataType = .shor
+            self.value    = try stream.readInt32( endianness: .big )
         }
-        else if self.dataType == "type"
+        else if dataType == "type"
         {
-            self.value = try stream.readUInt32( endianness: .big )
+            self.dataType = .type
+            self.value    = try stream.readUInt32( endianness: .big )
         }
-        else if self.dataType == "comp"
+        else if dataType == "comp"
         {
-            self.value = try stream.readInt64( endianness: .big )
+            self.dataType = .comp
+            self.value    = try stream.readInt64( endianness: .big )
         }
-        else if self.dataType == "dutc"
+        else if dataType == "dutc"
         {
-            let ts     = try stream.readInt64( endianness: .big )
-            self.value = Date( timeIntervalSinceReferenceDate: Double( ts ) )
+            self.dataType = .dutc
+            let ts        = try stream.readInt64( endianness: .big )
+            self.value    = Date( timeIntervalSinceReferenceDate: Double( ts ) )
         }
-        else if self.dataType == "blob"
+        else if dataType == "blob"
         {
-            let length = try stream.readUInt32( endianness: .big )
-            self.value = Data( try stream.read( size: size_t( length ) ) )
+            self.dataType = .blob
+            let length    = try stream.readUInt32( endianness: .big )
+            self.value    = Data( try stream.read( size: size_t( length ) ) )
         }
-        else if self.dataType == "ustr"
+        else if dataType == "ustr"
         {
-            let length = try stream.readUInt32( endianness: .big )
-            self.value = try stream.readString( length: size_t( length * 2 ), encoding: .utf16 )
+            self.dataType = .ustr
+            let length    = try stream.readUInt32( endianness: .big )
+            self.value    = try stream.readString( length: size_t( length * 2 ), encoding: .utf16 )
         }
         else
         {
