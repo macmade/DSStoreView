@@ -13,9 +13,9 @@
 		054C88FC26B89D890006A91C /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88EB26B89A9B0006A91C /* NSError.swift */; };
 		054C88FD26B89D890006A91C /* BinaryStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88CC26B884420006A91C /* BinaryStream.swift */; };
 		054C88FE26B89D890006A91C /* BinaryDataStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C88CD26B884420006A91C /* BinaryDataStream.swift */; };
-		054C890026B89D9A0006A91C /* libDSStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 054C88F126B89D780006A91C /* libDSStore.a */; };
+		054C890026B89D9A0006A91C /* libdsstore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 054C88F126B89D780006A91C /* libdsstore.a */; };
 		054C891726B89DE00006A91C /* Test-BinaryDataStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C891626B89DE00006A91C /* Test-BinaryDataStream.swift */; };
-		054C891926B89DE00006A91C /* libDSStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 054C88F126B89D780006A91C /* libDSStore.a */; };
+		054C891926B89DE00006A91C /* libdsstore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 054C88F126B89D780006A91C /* libdsstore.a */; };
 		054C892026B96EA80006A91C /* Test-UnsafeMutableBufferPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C891F26B96EA80006A91C /* Test-UnsafeMutableBufferPointer.swift */; };
 		054C893526B9741B0006A91C /* Test-BinaryFileStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C893426B9741B0006A91C /* Test-BinaryFileStream.swift */; };
 		054C893726B9761D0006A91C /* DSStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C893626B9761D0006A91C /* DSStore.swift */; };
@@ -50,15 +50,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		054C88C126B8838F0006A91C /* DSDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DSDump; sourceTree = BUILT_PRODUCTS_DIR; };
+		054C88C126B8838F0006A91C /* dsdump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dsdump; sourceTree = BUILT_PRODUCTS_DIR; };
 		054C88C426B8838F0006A91C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		054C88CB26B884420006A91C /* BinaryFileStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFileStream.swift; sourceTree = "<group>"; };
 		054C88CC26B884420006A91C /* BinaryStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryStream.swift; sourceTree = "<group>"; };
 		054C88CD26B884420006A91C /* BinaryDataStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryDataStream.swift; sourceTree = "<group>"; };
 		054C88E426B88ED60006A91C /* UnsafeMutableBufferPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeMutableBufferPointer.swift; sourceTree = "<group>"; };
 		054C88EB26B89A9B0006A91C /* NSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
-		054C88F126B89D780006A91C /* libDSStore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDSStore.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		054C891426B89DE00006A91C /* DSStore-Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DSStore-Test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		054C88F126B89D780006A91C /* libdsstore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdsstore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		054C891426B89DE00006A91C /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		054C891626B89DE00006A91C /* Test-BinaryDataStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-BinaryDataStream.swift"; sourceTree = "<group>"; };
 		054C891826B89DE00006A91C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		054C891F26B96EA80006A91C /* Test-UnsafeMutableBufferPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test-UnsafeMutableBufferPointer.swift"; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				054C890026B89D9A0006A91C /* libDSStore.a in Frameworks */,
+				054C890026B89D9A0006A91C /* libdsstore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				054C891926B89DE00006A91C /* libDSStore.a in Frameworks */,
+				054C891926B89DE00006A91C /* libdsstore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,9 +151,9 @@
 				054C893826B9786C0006A91C /* LICENSE */,
 				054C893926B9786C0006A91C /* README.md */,
 				054C893A26B979510006A91C /* xcconfig */,
-				054C88C326B8838F0006A91C /* DSDump */,
-				054C88F226B89D780006A91C /* DSStore */,
-				054C891526B89DE00006A91C /* DSStore-Test */,
+				054C88C326B8838F0006A91C /* dsdump */,
+				054C88F226B89D780006A91C /* dsstore */,
+				054C891526B89DE00006A91C /* Tests */,
 				054C88C226B8838F0006A91C /* Products */,
 				054C88FF26B89D9A0006A91C /* Frameworks */,
 			);
@@ -162,22 +162,22 @@
 		054C88C226B8838F0006A91C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				054C88C126B8838F0006A91C /* DSDump */,
-				054C88F126B89D780006A91C /* libDSStore.a */,
-				054C891426B89DE00006A91C /* DSStore-Test.xctest */,
+				054C88C126B8838F0006A91C /* dsdump */,
+				054C88F126B89D780006A91C /* libdsstore.a */,
+				054C891426B89DE00006A91C /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		054C88C326B8838F0006A91C /* DSDump */ = {
+		054C88C326B8838F0006A91C /* dsdump */ = {
 			isa = PBXGroup;
 			children = (
 				054C88C426B8838F0006A91C /* main.swift */,
 			);
-			path = DSDump;
+			path = dsdump;
 			sourceTree = "<group>";
 		};
-		054C88F226B89D780006A91C /* DSStore */ = {
+		054C88F226B89D780006A91C /* dsstore */ = {
 			isa = PBXGroup;
 			children = (
 				054C88CD26B884420006A91C /* BinaryDataStream.swift */,
@@ -193,7 +193,7 @@
 				05B48ADE26B9E042000F53E5 /* Block.swift */,
 				05B48AE026B9E45B000F53E5 /* Record.swift */,
 			);
-			path = DSStore;
+			path = dsstore;
 			sourceTree = "<group>";
 		};
 		054C88FF26B89D9A0006A91C /* Frameworks */ = {
@@ -203,7 +203,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		054C891526B89DE00006A91C /* DSStore-Test */ = {
+		054C891526B89DE00006A91C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				054C891626B89DE00006A91C /* Test-BinaryDataStream.swift */,
@@ -211,7 +211,7 @@
 				054C891F26B96EA80006A91C /* Test-UnsafeMutableBufferPointer.swift */,
 				054C891826B89DE00006A91C /* Info.plist */,
 			);
-			path = "DSStore-Test";
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		054C893A26B979510006A91C /* xcconfig */ = {
@@ -343,9 +343,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		054C88C026B8838F0006A91C /* DSDump */ = {
+		054C88C026B8838F0006A91C /* dsdump */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 054C88C826B8838F0006A91C /* Build configuration list for PBXNativeTarget "DSDump" */;
+			buildConfigurationList = 054C88C826B8838F0006A91C /* Build configuration list for PBXNativeTarget "dsdump" */;
 			buildPhases = (
 				054C88BD26B8838F0006A91C /* Sources */,
 				054C88BE26B8838F0006A91C /* Frameworks */,
@@ -355,14 +355,14 @@
 			);
 			dependencies = (
 			);
-			name = DSDump;
+			name = dsdump;
 			productName = DSDump;
-			productReference = 054C88C126B8838F0006A91C /* DSDump */;
+			productReference = 054C88C126B8838F0006A91C /* dsdump */;
 			productType = "com.apple.product-type.tool";
 		};
-		054C88F026B89D780006A91C /* DSStore */ = {
+		054C88F026B89D780006A91C /* dsstore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 054C88F726B89D780006A91C /* Build configuration list for PBXNativeTarget "DSStore" */;
+			buildConfigurationList = 054C88F726B89D780006A91C /* Build configuration list for PBXNativeTarget "dsstore" */;
 			buildPhases = (
 				054C88ED26B89D780006A91C /* Headers */,
 				054C88EE26B89D780006A91C /* Sources */,
@@ -372,14 +372,14 @@
 			);
 			dependencies = (
 			);
-			name = DSStore;
+			name = dsstore;
 			productName = DSStore;
-			productReference = 054C88F126B89D780006A91C /* libDSStore.a */;
+			productReference = 054C88F126B89D780006A91C /* libdsstore.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		054C891326B89DE00006A91C /* DSStore-Test */ = {
+		054C891326B89DE00006A91C /* Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 054C891C26B89DE00006A91C /* Build configuration list for PBXNativeTarget "DSStore-Test" */;
+			buildConfigurationList = 054C891C26B89DE00006A91C /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
 				054C891026B89DE00006A91C /* Sources */,
 				054C891126B89DE00006A91C /* Frameworks */,
@@ -390,9 +390,9 @@
 			dependencies = (
 				054C891B26B89DE00006A91C /* PBXTargetDependency */,
 			);
-			name = "DSStore-Test";
+			name = Tests;
 			productName = "DSStore-Test";
-			productReference = 054C891426B89DE00006A91C /* DSStore-Test.xctest */;
+			productReference = 054C891426B89DE00006A91C /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -415,7 +415,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 054C88BC26B8838F0006A91C /* Build configuration list for PBXProject "DSDump" */;
+			buildConfigurationList = 054C88BC26B8838F0006A91C /* Build configuration list for PBXProject "DSStoreView" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -428,9 +428,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				054C88C026B8838F0006A91C /* DSDump */,
-				054C88F026B89D780006A91C /* DSStore */,
-				054C891326B89DE00006A91C /* DSStore-Test */,
+				054C88C026B8838F0006A91C /* dsdump */,
+				054C88F026B89D780006A91C /* dsstore */,
+				054C891326B89DE00006A91C /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -488,7 +488,7 @@
 /* Begin PBXTargetDependency section */
 		054C891B26B89DE00006A91C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 054C88F026B89D780006A91C /* DSStore */;
+			target = 054C88F026B89D780006A91C /* dsstore */;
 			targetProxy = 054C891A26B89DE00006A91C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -532,6 +532,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				EXECUTABLE_PREFIX = lib;
+				PRODUCT_MODULE_NAME = DSStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -541,6 +542,7 @@
 			baseConfigurationReference = 054C894126B979510006A91C /* Release - Library.xcconfig */;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				PRODUCT_MODULE_NAME = DSStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -548,13 +550,13 @@
 		054C891D26B89DE00006A91C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "DSStore-Test/Info.plist";
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.DSStore-Test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.DSStore.Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -562,13 +564,13 @@
 		054C891E26B89DE00006A91C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "DSStore-Test/Info.plist";
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.DSStore-Test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.DSStore.Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -576,7 +578,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		054C88BC26B8838F0006A91C /* Build configuration list for PBXProject "DSDump" */ = {
+		054C88BC26B8838F0006A91C /* Build configuration list for PBXProject "DSStoreView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				054C88C626B8838F0006A91C /* Debug */,
@@ -585,7 +587,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		054C88C826B8838F0006A91C /* Build configuration list for PBXNativeTarget "DSDump" */ = {
+		054C88C826B8838F0006A91C /* Build configuration list for PBXNativeTarget "dsdump" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				054C88C926B8838F0006A91C /* Debug */,
@@ -594,7 +596,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		054C88F726B89D780006A91C /* Build configuration list for PBXNativeTarget "DSStore" */ = {
+		054C88F726B89D780006A91C /* Build configuration list for PBXNativeTarget "dsstore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				054C88F826B89D780006A91C /* Debug */,
@@ -603,7 +605,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		054C891C26B89DE00006A91C /* Build configuration list for PBXNativeTarget "DSStore-Test" */ = {
+		054C891C26B89DE00006A91C /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				054C891D26B89DE00006A91C /* Debug */,

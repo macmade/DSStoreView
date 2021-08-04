@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "054C88F026B89D780006A91C"
-               BuildableName = "libDSStore.a"
-               BlueprintName = "DSStore"
-               ReferencedContainer = "container:DSDump.xcodeproj">
+               BuildableName = "libdsstore.a"
+               BlueprintName = "dsstore"
+               ReferencedContainer = "container:DSStoreView.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "054C891326B89DE00006A91C"
-               BuildableName = "DSStore-Test.xctest"
-               BlueprintName = "DSStore-Test"
-               ReferencedContainer = "container:DSDump.xcodeproj">
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
+               ReferencedContainer = "container:DSStoreView.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "054C88F026B89D780006A91C"
-            BuildableName = "libDSStore.a"
-            BlueprintName = "DSStore"
-            ReferencedContainer = "container:DSDump.xcodeproj">
+            BuildableName = "libdsstore.a"
+            BlueprintName = "dsstore"
+            ReferencedContainer = "container:DSStoreView.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
