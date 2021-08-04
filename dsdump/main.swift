@@ -87,61 +87,57 @@ func getNodes( in directories: [ Block ] ) -> [ Block ]
 
 func valueDescription( _ record: Record ) -> String
 {
-    if record.dataType == "bool"
+    if let value = record.value as? Bool
     {
-        if record.data.count >= 1
-        {
-            return record.data[ 0 ] == 1 ? "True" : "False"
-        }
+        return value ? "True" : "False"
     }
-    else if record.dataType == "long" || record.dataType == "shor"
+    else if let value = record.value as? Int8
     {
-        if record.data.count >= 4
-        {
-            let n1 = record.data[ 0 ]
-            let n2 = record.data[ 1 ]
-            let n3 = record.data[ 2 ]
-            let n4 = record.data[ 3 ]
-            let n  = ( n1 << 24 ) | ( n2 << 16 ) | ( n3 << 8 ) | n4
-            
-            return "\( n )"
-        }
+        return "\( value )"
     }
-    else if record.dataType == "type"
+    else if let value = record.value as? UInt8
     {
-        if record.data.count >= 4
-        {
-            return String( format: "%c%c%c%c", record.data[ 0 ], record.data[ 1 ], record.data[ 2 ], record.data[ 3 ] )
-        }
+        return "\( value )"
     }
-    else if record.dataType == "comp" ||  record.dataType == "dutc"
+    else if let value = record.value as? Int16
     {
-        if record.data.count >= 8
-        {
-            let n1 = record.data[ 0 ]
-            let n2 = record.data[ 1 ]
-            let n3 = record.data[ 2 ]
-            let n4 = record.data[ 3 ]
-            let n5 = record.data[ 4 ]
-            let n6 = record.data[ 5 ]
-            let n7 = record.data[ 6 ]
-            let n8 = record.data[ 7 ]
-            let n  = ( n1 << 56 ) | ( n2 << 48 ) | ( n3 << 40 ) | ( n4 << 32 ) | ( n5 << 24 ) | ( n6 << 16 ) | ( n7 << 8 ) | n8
-            
-            return "\( n )"
-        }
+        return "\( value )"
     }
-    else if record.dataType == "blob"
+    else if let value = record.value as? UInt16
     {
-        if record.data.count > 0 && record.data.count > 32
+        return "\( value )"
+    }
+    else if let value = record.value as? Int32
+    {
+        return "\( value )"
+    }
+    else if let value = record.value as? UInt32
+    {
+        return "\( value )"
+    }
+    else if let value = record.value as? Int64
+    {
+        return "\( value )"
+    }
+    else if let value = record.value as? UInt64
+    {
+        return "\( value )"
+    }
+    else if let value = record.value as? Date
+    {
+        return ISO8601DateFormatter().string( from: value )
+    }
+    else if let value = record.value as? Data
+    {
+        if value.count > 0 && value.count > 32
         {
-            return "\( record.data.count ) bytes"
+            return "\( value.count ) bytes"
         }
-        else if record.data.count > 0
+        else if value.count > 0
         {
             var description = ""
             
-            for byte in record.data
+            for byte in value
             {
                 description.append( String( format: "%02X", byte ) )
             }
@@ -149,9 +145,9 @@ func valueDescription( _ record: Record ) -> String
             return description
         }
     }
-    else if record.dataType == "ustr"
+    else if let value = record.value as? String
     {
-        return String( data: record.data, encoding: .utf16 ) ?? "--"
+        return value
     }
     
     return "--"

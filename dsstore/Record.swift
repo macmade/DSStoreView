@@ -29,7 +29,7 @@ public class Record
     public private( set ) var name:     String
     public private( set ) var type:     UInt32
     public private( set ) var dataType: String
-    public private( set ) var data:     Data
+    public private( set ) var value:    Any?
     
     public init( stream: BinaryStream ) throws
     {
@@ -52,37 +52,38 @@ public class Record
         
         if self.dataType == "bool"
         {
-            self.data = Data( try stream.read( size: 1 ) )
+            self.value = try stream.readUInt8() == 1
         }
         else if self.dataType == "long"
         {
-            self.data = Data( try stream.read( size: 4 ) )
+            self.value = try stream.readInt32( endianness: .big )
         }
         else if self.dataType == "shor"
         {
-            self.data = Data( try stream.read( size: 4 ) )
+            self.value = try stream.readInt32( endianness: .big )
         }
         else if self.dataType == "type"
         {
-            self.data = Data( try stream.read( size: 4 ) )
+            self.value = try stream.readUInt32( endianness: .big )
         }
         else if self.dataType == "comp"
         {
-            self.data = Data( try stream.read( size: 8 ) )
+            self.value = try stream.readInt64( endianness: .big )
         }
         else if self.dataType == "dutc"
         {
-            self.data = Data( try stream.read( size: 8 ) )
+            let ts     = try stream.readInt64( endianness: .big )
+            self.value = Date( timeIntervalSinceReferenceDate: Double( ts ) )
         }
         else if self.dataType == "blob"
         {
             let length = try stream.readUInt32( endianness: .big )
-            self.data  = Data( try stream.read( size: size_t( length ) ) )
+            self.value = Data( try stream.read( size: size_t( length ) ) )
         }
         else if self.dataType == "ustr"
         {
             let length = try stream.readUInt32( endianness: .big )
-            self.data  = Data( try stream.read( size: size_t( length * 2 ) ) )
+            self.value = try stream.readString( length: size_t( length * 2 ), encoding: .utf16 )
         }
         else
         {
