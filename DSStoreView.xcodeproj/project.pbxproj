@@ -25,6 +25,8 @@
 		05B48ADD26B9D17D000F53E5 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B48ADC26B9D17D000F53E5 /* Error.swift */; };
 		05B48ADF26B9E042000F53E5 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B48ADE26B9E042000F53E5 /* Block.swift */; };
 		05B48AE126B9E45B000F53E5 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B48AE026B9E45B000F53E5 /* Record.swift */; };
+		05FC7E7326BAA5BF0033FC23 /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7E6F26BAA5BF0033FC23 /* ApplicationDelegate.swift */; };
+		05FC7E7426BAA5BF0033FC23 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05FC7E7126BAA5BF0033FC23 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,11 @@
 		05B48ADC26B9D17D000F53E5 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		05B48ADE26B9E042000F53E5 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		05B48AE026B9E45B000F53E5 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		05FC7E6026BAA5850033FC23 /* DSStoreView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSStoreView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05FC7E6926BAA5860033FC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05FC7E6A26BAA5860033FC23 /* DSStoreView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSStoreView.entitlements; sourceTree = "<group>"; };
+		05FC7E6F26BAA5BF0033FC23 /* ApplicationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
+		05FC7E7226BAA5BF0033FC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +149,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		05FC7E5D26BAA5850033FC23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -151,6 +165,7 @@
 				054C893826B9786C0006A91C /* LICENSE */,
 				054C893926B9786C0006A91C /* README.md */,
 				054C893A26B979510006A91C /* xcconfig */,
+				05FC7E6126BAA5850033FC23 /* DSStoreView */,
 				054C88C326B8838F0006A91C /* dsdump */,
 				054C88F226B89D780006A91C /* dsstore */,
 				054C891526B89DE00006A91C /* Tests */,
@@ -165,6 +180,7 @@
 				054C88C126B8838F0006A91C /* dsdump */,
 				054C88F126B89D780006A91C /* libdsstore.a */,
 				054C891426B89DE00006A91C /* Tests.xctest */,
+				05FC7E6026BAA5850033FC23 /* DSStoreView.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -330,6 +346,33 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
+		05FC7E6126BAA5850033FC23 /* DSStoreView */ = {
+			isa = PBXGroup;
+			children = (
+				05FC7E6E26BAA5BF0033FC23 /* Classes */,
+				05FC7E7026BAA5BF0033FC23 /* UI */,
+				05FC7E6926BAA5860033FC23 /* Info.plist */,
+				05FC7E6A26BAA5860033FC23 /* DSStoreView.entitlements */,
+			);
+			path = DSStoreView;
+			sourceTree = "<group>";
+		};
+		05FC7E6E26BAA5BF0033FC23 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				05FC7E6F26BAA5BF0033FC23 /* ApplicationDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		05FC7E7026BAA5BF0033FC23 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				05FC7E7126BAA5BF0033FC23 /* MainMenu.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -395,6 +438,23 @@
 			productReference = 054C891426B89DE00006A91C /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		05FC7E5F26BAA5850033FC23 /* DSStoreView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05FC7E6B26BAA5860033FC23 /* Build configuration list for PBXNativeTarget "DSStoreView" */;
+			buildPhases = (
+				05FC7E5C26BAA5850033FC23 /* Sources */,
+				05FC7E5D26BAA5850033FC23 /* Frameworks */,
+				05FC7E5E26BAA5850033FC23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DSStoreView;
+			productName = DSStoreView;
+			productReference = 05FC7E6026BAA5850033FC23 /* DSStoreView.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -413,6 +473,9 @@
 					054C891326B89DE00006A91C = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
+					05FC7E5F26BAA5850033FC23 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 				};
 			};
 			buildConfigurationList = 054C88BC26B8838F0006A91C /* Build configuration list for PBXProject "DSStoreView" */;
@@ -428,6 +491,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				05FC7E5F26BAA5850033FC23 /* DSStoreView */,
 				054C88C026B8838F0006A91C /* dsdump */,
 				054C88F026B89D780006A91C /* dsstore */,
 				054C891326B89DE00006A91C /* Tests */,
@@ -440,6 +504,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05FC7E5E26BAA5850033FC23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05FC7E7426BAA5BF0033FC23 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +555,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		05FC7E5C26BAA5850033FC23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05FC7E7326BAA5BF0033FC23 /* ApplicationDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -492,6 +572,17 @@
 			targetProxy = 054C891A26B89DE00006A91C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		05FC7E7126BAA5BF0033FC23 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05FC7E7226BAA5BF0033FC23 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		054C88C626B8838F0006A91C /* Debug */ = {
@@ -575,6 +666,34 @@
 			};
 			name = Release;
 		};
+		05FC7E6C26BAA5860033FC23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DSStoreView/DSStoreView.entitlements;
+				INFOPLIST_FILE = DSStoreView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.DSStoreView";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		05FC7E6D26BAA5860033FC23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DSStoreView/DSStoreView.entitlements;
+				INFOPLIST_FILE = DSStoreView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.DSStoreView";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -610,6 +729,15 @@
 			buildConfigurations = (
 				054C891D26B89DE00006A91C /* Debug */,
 				054C891E26B89DE00006A91C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05FC7E6B26BAA5860033FC23 /* Build configuration list for PBXNativeTarget "DSStoreView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05FC7E6C26BAA5860033FC23 /* Debug */,
+				05FC7E6D26BAA5860033FC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
