@@ -24,30 +24,26 @@
 
 import Foundation
 
-@objc public class MasterBlock: NSObject
+@objc( ArrayIsEmpty )
+public class ArrayIsEmpty: ValueTransformer
 {
-    @objc public private( set ) dynamic var id:       UInt32
-    @objc public private( set ) dynamic var rootNode: Block
-    
-    public init( stream: BinaryStream, id: UInt32, allocator: Allocator ) throws
+    public override class func transformedValueClass() -> AnyClass
     {
-        self.id = id
-        
-        if id >= allocator.blocks.count || id > Int.max
+        NSNumber.self
+    }
+    
+    public override class func allowsReverseTransformation() -> Bool
+    {
+        false
+    }
+    
+    public override func transformedValue( _ value: Any? ) -> Any?
+    {
+        guard let array = value as? [ Any ] else
         {
-            throw Error( message: "Invalid directory ID" )
+            return NSNumber( booleanLiteral: true )
         }
         
-        let ( offset, _ ) = allocator.blocks[ Int( id ) ]
-        
-        try stream.seek( offset: size_t( offset + 4 ), from: .begin )
-        
-        let rootNodeID = try stream.readUInt32( endianness: .big )
-        let _          = try stream.readUInt32( endianness: .big )
-        let _          = try stream.readUInt32( endianness: .big )
-        let _          = try stream.readUInt32( endianness: .big )
-        let _          = try stream.readUInt32( endianness: .big )
-        
-        self.rootNode = try Block( stream: stream, id: rootNodeID, allocator: allocator )
+        return NSNumber( booleanLiteral: array.count == 0 )
     }
 }

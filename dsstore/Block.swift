@@ -26,12 +26,15 @@ import Foundation
 
 @objc public class Block: NSObject
 {
+    @objc public private( set ) dynamic var id:       UInt32
     @objc public private( set ) dynamic var mode:     UInt32
     @objc public private( set ) dynamic var children: [ Block ]  = []
     @objc public private( set ) dynamic var records:  [ Record ] = []
     
     public init( stream: BinaryStream, id: UInt32, allocator: Allocator ) throws
     {
+        self.id = id
+        
         if id >= allocator.blocks.count || id > Int.max
         {
             throw Error( message: "Invalid directory ID" )

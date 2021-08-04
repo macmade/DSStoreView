@@ -27,14 +27,17 @@ import DSStore
 
 public class DSStoreViewController: NSViewController
 {
-    @objc public private( set ) dynamic var folder: Folder
-    @objc public private( set ) dynamic var file:   DSStore?
-    @objc public private( set ) dynamic var error:  NSError?
+    @objc public private( set ) dynamic var folder:        Folder
+    @objc public private( set ) dynamic var file:          DSStore?
+    @objc public private( set ) dynamic var error:         NSError?
+    @objc public private( set ) dynamic var selectedBlock: BlockNode?
     
     @IBOutlet private var blocksController:  NSTreeController!
     @IBOutlet private var recordsController: NSArrayController!
     @IBOutlet private var blocksOutlineView: NSOutlineView!
     @IBOutlet private var recordsTableView:  NSTableView!
+    
+    private var selectionObserver: NSKeyValueObservation?
     
     public init( folder: Folder )
     {
@@ -72,5 +75,42 @@ public class DSStoreViewController: NSViewController
     public override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.blocksController.sortDescriptors  = [ NSSortDescriptor( key: "name", ascending: true, selector: #selector( NSString.localizedCaseInsensitiveCompare( _: ) ) ) ]
+        self.recordsController.sortDescriptors = [ NSSortDescriptor( key: "name", ascending: true, selector: #selector( NSString.localizedCaseInsensitiveCompare( _: ) ) ) ]
+        
+        self.selectionObserver = self.blocksController.observe( \.selectionIndexPaths )
+        {
+            [ weak self ] _, _ in self?.selectionDidChange()
+        }
+        
+        if let file = self.file
+        {
+            file.directories.map
+            {
+                BlockNode( name: $0.key, block: $0.value )
+            }
+            .forEach
+            {
+                self.blocksController.addObject( $0 )
+            }
+            
+            DispatchQueue.main.async
+            {
+                self.blocksOutlineView.expandItem( nil, expandChildren: true )
+            }
+        }
+    }
+    
+    private func selectionDidChange()
+    {
+        guard let block = self.blocksController.selectedObjects.first as? BlockNode else
+        {
+            self.selectedBlock = nil
+            
+            return
+        }
+        
+        self.selectedBlock = block
     }
 }

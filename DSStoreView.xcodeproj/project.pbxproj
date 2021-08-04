@@ -37,6 +37,12 @@
 		05FC7E8D26BAD86A0033FC23 /* DSStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7E8C26BAD86A0033FC23 /* DSStoreViewController.swift */; };
 		05FC7E9026BAD9350033FC23 /* DSStoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05FC7E8E26BAD9350033FC23 /* DSStoreViewController.xib */; };
 		05FC7E9426BADD900033FC23 /* libdsstore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 054C88F126B89D780006A91C /* libdsstore.a */; };
+		05FC7E9726BAF1440033FC23 /* BlockNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7E9626BAF1440033FC23 /* BlockNode.swift */; };
+		05FC7E9926BAF4580033FC23 /* ArrayIsEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7E9826BAF4580033FC23 /* ArrayIsEmpty.swift */; };
+		05FC7E9B26BAF6A20033FC23 /* ArrayIsNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7E9A26BAF6A20033FC23 /* ArrayIsNotEmpty.swift */; };
+		05FC7E9D26BAF8020033FC23 /* RecordDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7E9C26BAF8020033FC23 /* RecordDataType.swift */; };
+		05FC7E9F26BAF8350033FC23 /* HexNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7E9E26BAF8350033FC23 /* HexNumber.swift */; };
+		05FC7EA126BAF9530033FC23 /* RecordValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7EA026BAF9530033FC23 /* RecordValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +148,12 @@
 		05FC7E8A26BAC7160033FC23 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		05FC7E8C26BAD86A0033FC23 /* DSStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSStoreViewController.swift; sourceTree = "<group>"; };
 		05FC7E8F26BAD9350033FC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DSStoreViewController.xib; sourceTree = "<group>"; };
+		05FC7E9626BAF1440033FC23 /* BlockNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNode.swift; sourceTree = "<group>"; };
+		05FC7E9826BAF4580033FC23 /* ArrayIsEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayIsEmpty.swift; sourceTree = "<group>"; };
+		05FC7E9A26BAF6A20033FC23 /* ArrayIsNotEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayIsNotEmpty.swift; sourceTree = "<group>"; };
+		05FC7E9C26BAF8020033FC23 /* RecordDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDataType.swift; sourceTree = "<group>"; };
+		05FC7E9E26BAF8350033FC23 /* HexNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexNumber.swift; sourceTree = "<group>"; };
+		05FC7EA026BAF9530033FC23 /* RecordValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,11 +394,17 @@
 			children = (
 				05FC7E7D26BAAA1F0033FC23 /* AboutWindowController.swift */,
 				05FC7E6F26BAA5BF0033FC23 /* ApplicationDelegate.swift */,
-				05FC7E7826BAA98D0033FC23 /* MainWindowController.swift */,
+				05FC7E9826BAF4580033FC23 /* ArrayIsEmpty.swift */,
+				05FC7E9A26BAF6A20033FC23 /* ArrayIsNotEmpty.swift */,
+				05FC7E9626BAF1440033FC23 /* BlockNode.swift */,
+				05FC7E8C26BAD86A0033FC23 /* DSStoreViewController.swift */,
+				05FC7E8A26BAC7160033FC23 /* FileManager.swift */,
 				05FC7E7F26BAAD830033FC23 /* Folder.swift */,
 				05FC7E8826BAC4520033FC23 /* FolderGroup.swift */,
-				05FC7E8A26BAC7160033FC23 /* FileManager.swift */,
-				05FC7E8C26BAD86A0033FC23 /* DSStoreViewController.swift */,
+				05FC7E9E26BAF8350033FC23 /* HexNumber.swift */,
+				05FC7E7826BAA98D0033FC23 /* MainWindowController.swift */,
+				05FC7EA026BAF9530033FC23 /* RecordValue.swift */,
+				05FC7E9C26BAF8020033FC23 /* RecordDataType.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -395,9 +413,9 @@
 			isa = PBXGroup;
 			children = (
 				05FC7E7A26BAAA1A0033FC23 /* AboutWindowController.xib */,
+				05FC7E8E26BAD9350033FC23 /* DSStoreViewController.xib */,
 				05FC7E7126BAA5BF0033FC23 /* MainMenu.xib */,
 				05FC7E7526BAA9810033FC23 /* MainWindowController.xib */,
-				05FC7E8E26BAD9350033FC23 /* DSStoreViewController.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -591,13 +609,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05FC7E9F26BAF8350033FC23 /* HexNumber.swift in Sources */,
+				05FC7E9926BAF4580033FC23 /* ArrayIsEmpty.swift in Sources */,
 				05FC7E7E26BAAA1F0033FC23 /* AboutWindowController.swift in Sources */,
 				05FC7E7926BAA98D0033FC23 /* MainWindowController.swift in Sources */,
 				05FC7E7326BAA5BF0033FC23 /* ApplicationDelegate.swift in Sources */,
+				05FC7E9726BAF1440033FC23 /* BlockNode.swift in Sources */,
+				05FC7E9D26BAF8020033FC23 /* RecordDataType.swift in Sources */,
 				05FC7E8B26BAC7160033FC23 /* FileManager.swift in Sources */,
 				05FC7E8D26BAD86A0033FC23 /* DSStoreViewController.swift in Sources */,
 				05FC7E8026BAAD830033FC23 /* Folder.swift in Sources */,
 				05FC7E8926BAC4520033FC23 /* FolderGroup.swift in Sources */,
+				05FC7EA126BAF9530033FC23 /* RecordValue.swift in Sources */,
+				05FC7E9B26BAF6A20033FC23 /* ArrayIsNotEmpty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,31 +23,24 @@
  ******************************************************************************/
 
 import Foundation
+import DSStore
 
-@objc public class MasterBlock: NSObject
+@objc public class BlockNode: NSObject
 {
-    @objc public private( set ) dynamic var id:       UInt32
-    @objc public private( set ) dynamic var rootNode: Block
+    @objc public private( set ) dynamic var name:     String
+    @objc public private( set ) dynamic var children: [ BlockNode ] = []
+    @objc public private( set ) dynamic var records:  [ Record ]    = []
     
-    public init( stream: BinaryStream, id: UInt32, allocator: Allocator ) throws
+    init( name: String, block: MasterBlock )
     {
-        self.id = id
-        
-        if id >= allocator.blocks.count || id > Int.max
-        {
-            throw Error( message: "Invalid directory ID" )
-        }
-        
-        let ( offset, _ ) = allocator.blocks[ Int( id ) ]
-        
-        try stream.seek( offset: size_t( offset + 4 ), from: .begin )
-        
-        let rootNodeID = try stream.readUInt32( endianness: .big )
-        let _          = try stream.readUInt32( endianness: .big )
-        let _          = try stream.readUInt32( endianness: .big )
-        let _          = try stream.readUInt32( endianness: .big )
-        let _          = try stream.readUInt32( endianness: .big )
-        
-        self.rootNode = try Block( stream: stream, id: rootNodeID, allocator: allocator )
+        self.name     = name
+        self.children = [ BlockNode( block: block.rootNode ) ]
+    }
+    
+    init( block: Block )
+    {
+        self.name     = "#\( block.id )"
+        self.children = block.children.map { BlockNode( block: $0 ) }
+        self.records  = block.records
     }
 }

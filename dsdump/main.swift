@@ -175,7 +175,7 @@ func printFile( _ file: DSStore )
         """
     )
     
-    for node in getNodes( in: file.directories.map { $0.rootNode } )
+    for node in getNodes( in: file.directories.map { $0.value.rootNode } )
     {
         print(
             """

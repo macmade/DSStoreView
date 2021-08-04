@@ -36,7 +36,7 @@ import Foundation
 {
     @objc public private( set ) dynamic var header:      Header
     @objc public private( set ) dynamic var allocator:   Allocator
-    @objc public private( set ) dynamic var directories: [ MasterBlock ] = []
+    @objc public private( set ) dynamic var directories: [ String : MasterBlock ] = [:]
     
     public convenience init( path: String ) throws
     {
@@ -55,7 +55,7 @@ import Foundation
         
         for directory in self.allocator.directories
         {
-            self.directories.append( try MasterBlock( stream: stream, id: directory.id, allocator: self.allocator ) )
+            self.directories[ directory.name ] = try MasterBlock( stream: stream, id: directory.id, allocator: self.allocator )
         }
     }
 }
