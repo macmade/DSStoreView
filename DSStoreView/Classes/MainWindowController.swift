@@ -84,6 +84,7 @@ public class MainWindowController: NSWindowController, NSOutlineViewDelegate, NS
         
         guard let selected = self.foldersController.selectedNodes.first?.representedObject as? Folder else
         {
+            self.window?.title     = "DSStoreView"
             self.contentController = nil
             self.selectedFolder    = nil
             
@@ -95,7 +96,8 @@ public class MainWindowController: NSWindowController, NSOutlineViewDelegate, NS
             return
         }
         
-        let controller = DSStoreViewController( folder: selected )
+        self.window?.title = "DSStoreView - \( selected.name )"
+        let controller     = DSStoreViewController( folder: selected )
         
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         controller.view.frame                                     = self.contentContainer.bounds

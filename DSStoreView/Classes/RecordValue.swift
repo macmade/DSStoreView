@@ -87,11 +87,31 @@ public class RecordValue: ValueTransformer
         }
         else if record.dataType == .blob
         {
-            return "--"
+            guard let data = record.value as? Data else
+            {
+                return "--"
+            }
+            
+            if data.count == 0
+            {
+                return "0 bytes"
+            }
+            
+            var str   = "\( data.count ) bytes: "
+            let bytes = data.prefix( 64 )
+            
+            bytes.forEach { str.append( String( format: "%02X", $0 ) ) }
+            
+            return str
         }
         else if record.dataType == .dutc
         {
-            return "--"
+            guard let date = record.value as? Date else
+            {
+                return "--"
+            }
+            
+            return ISO8601DateFormatter().string( from: date )
         }
         
         return "--"

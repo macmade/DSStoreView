@@ -1,8 +1,8 @@
-DSDump
-======
+DSStoreView
+===========
 
-[![Build Status](https://img.shields.io/travis/com/macmade/DSDump.svg?branch=master&style=flat)](https://travis-ci.com/macmade/DSDump)
-[![Issues](http://img.shields.io/github/issues/macmade/DSDump.svg?style=flat)](https://github.com/macmade/DSDump/issues)
+[![Build Status](https://img.shields.io/travis/com/macmade/DSStoreView.svg?branch=master&style=flat)](https://travis-ci.com/macmade/DSStoreView)
+[![Issues](http://img.shields.io/github/issues/macmade/DSStoreView.svg?style=flat)](https://github.com/macmade/DSStoreView/issues)
 ![Status](https://img.shields.io/badge/status-active-brightgreen.svg?style=flat)
 ![License](https://img.shields.io/badge/license-mit-brightgreen.svg?style=flat)
 [![Contact](https://img.shields.io/badge/contact-@macmade-blue.svg?style=flat)](https://twitter.com/macmade)  
@@ -12,7 +12,7 @@ DSDump
 
 ### About
 
-...
+![DSStoreView](Assets/DSStoreView.png "DSStoreView")
 
 License
 -------
