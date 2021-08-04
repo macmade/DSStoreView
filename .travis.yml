@@ -1,4 +1,5 @@
 language: objective-c
 osx_image: xcode12.5
 script:
-- set -o pipefail && xcodebuild -project "DSDump.xcodeproj" -scheme "DSDump" build test | xcpretty
+- set -o pipefail && xcodebuild -project "DSStoreView.xcodeproj" -scheme "DSStoreView" build test | xcpretty
+- set -o pipefail && xcodebuild -project "DSStoreView.xcodeproj" -scheme "dsdump" build test | xcpretty
