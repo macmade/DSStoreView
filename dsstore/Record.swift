@@ -24,12 +24,12 @@
 
 import Foundation
 
-public class Record
+@objc public class Record: NSObject
 {
-    public private( set ) var name:     String
-    public private( set ) var type:     UInt32
-    public private( set ) var dataType: String
-    public private( set ) var value:    Any?
+    @objc public private( set ) dynamic var name:     String
+    @objc public private( set ) dynamic var type:     UInt32
+    @objc public private( set ) dynamic var dataType: String
+    @objc public private( set ) dynamic var value:    Any?
     
     public init( stream: BinaryStream ) throws
     {

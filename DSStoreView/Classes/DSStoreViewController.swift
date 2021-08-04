@@ -22,46 +22,50 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Foundation
+import Cocoa
+import DSStore
 
-@objc public class Block: NSObject
+public class DSStoreViewController: NSViewController
 {
-    @objc public private( set ) dynamic var mode:     UInt32
-    @objc public private( set ) dynamic var children: [ Block ]  = []
-    @objc public private( set ) dynamic var records:  [ Record ] = []
+    @objc public private( set ) dynamic var folder: Folder
+    @objc public private( set ) dynamic var file:   DSStore?
+    @objc public private( set ) dynamic var error:  NSError?
     
-    public init( stream: BinaryStream, id: UInt32, allocator: Allocator ) throws
+    public init( folder: Folder )
     {
-        if id >= allocator.blocks.count || id > Int.max
+        self.folder = folder
+        
+        super.init( nibName: nil, bundle: nil )
+        
+        if folder.hasDSStoreFile
         {
-            throw Error( message: "Invalid directory ID" )
-        }
-        
-        let ( offset, _ ) = allocator.blocks[ Int( id ) ]
-        
-        try stream.seek( offset: size_t( offset + 4 ), from: .begin )
-        
-        self.mode = try stream.readUInt32( endianness: .big )
-        let count = try stream.readUInt32( endianness: .big )
-        
-        if self.mode == 0
-        {
-            for _ in 0 ..< count
+            do
             {
-                self.records.append( try Record( stream: stream ) )
+                try self.file = DSStore( url: folder.url.appendingPathComponent( ".DS_Store" ) )
+            }
+            catch let error as Error
+            {
+                self.error = NSError( title: "Cannot Read File", message: error.message )
+            }
+            catch let error
+            {
+                self.error = NSError( title: "Cannot Read File", message: error.localizedDescription )
             }
         }
-        else
-        {
-            for _ in 0 ..< count
-            {
-                let blockID = try stream.readUInt32( endianness: .big )
-                let pos     = stream.tell()
-                
-                self.children.append( try Block( stream: stream, id: blockID, allocator: allocator ) )
-                try stream.seek( offset: pos, from: .begin )
-                self.records.append( try Record( stream: stream ) )
-            }
-        }
+    }
+    
+    required init?( coder: NSCoder )
+    {
+        nil
+    }
+    
+    public override var nibName: NSNib.Name?
+    {
+        "DSStoreViewController"
+    }
+    
+    public override func viewDidLoad()
+    {
+        super.viewDidLoad()
     }
 }

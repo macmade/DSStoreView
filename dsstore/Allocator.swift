@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class Allocator
+@objc public class Allocator: NSObject
 {
     public private( set ) var blocks      = [ ( offset: UInt32, size: UInt32 ) ]()
     public private( set ) var directories = [ ( name: String, id: UInt32 ) ]()
@@ -46,6 +46,8 @@ public class Allocator
         let remaining = 256 - ( n % 256 )
         
         try stream.seek( offset: size_t( remaining * 4 ), from: .current )
+        
+        super.init()
         
         try self.readDirectories( stream: stream )
         try self.readFreeList( stream: stream )

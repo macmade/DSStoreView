@@ -24,9 +24,9 @@
 
 import Foundation
 
-public class MasterBlock
+@objc public class MasterBlock: NSObject
 {
-    public private( set ) var rootNode: Block
+    @objc public private( set ) dynamic var rootNode: Block
     
     public init( stream: BinaryStream, id: UInt32, allocator: Allocator ) throws
     {

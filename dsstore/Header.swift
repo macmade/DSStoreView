@@ -24,13 +24,13 @@
 
 import Foundation
 
-public class Header
+@objc public class Header: NSObject
 {
-    public private( set ) var alignement: UInt32
-    public private( set ) var magic:      UInt32
-    public private( set ) var offset1:    UInt32
-    public private( set ) var size:       UInt32
-    public private( set ) var offset2:    UInt32
+    @objc public private( set ) dynamic var alignement: UInt32
+    @objc public private( set ) dynamic var magic:      UInt32
+    @objc public private( set ) dynamic var offset1:    UInt32
+    @objc public private( set ) dynamic var size:       UInt32
+    @objc public private( set ) dynamic var offset2:    UInt32
     
     public init( stream: BinaryStream ) throws
     {

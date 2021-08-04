@@ -24,38 +24,16 @@
 
 import Foundation
 
-/*
- * Reference:
- *  - https://formats.kaitai.io/ds_store/index.html
- *  - https://wiki.mozilla.org/DS_Store_File_Format
- *  - https://0day.work/parsing-the-ds_store-file-format/
- *  - https://metacpan.org/dist/Mac-Finder-DSStore/view/DSStoreFormat.pod
- */
-
-@objc public class DSStore: NSObject
+@objc public class FolderGroup: NSObject
 {
-    @objc public private( set ) dynamic var header:      Header
-    @objc public private( set ) dynamic var allocator:   Allocator
-    @objc public private( set ) dynamic var directories: [ MasterBlock ] = []
+    @objc public private( set ) dynamic var url:      URL
+    @objc public private( set ) dynamic var name:     String
+    @objc public private( set ) dynamic var children: [ Folder ]
     
-    public convenience init( path: String ) throws
+    public init( name: String, url: URL )
     {
-        try self.init( url: URL( fileURLWithPath: path ) )
-    }
-    
-    public init( url: URL ) throws
-    {
-        guard let stream = BinaryFileStream( url: url ) else
-        {
-            throw Error( message: "Cannot read file: \( url.path )" )
-        }
-        
-        self.header    = try Header( stream: stream )
-        self.allocator = try Allocator( stream: stream, header: self.header )
-        
-        for directory in self.allocator.directories
-        {
-            self.directories.append( try MasterBlock( stream: stream, id: directory.id, allocator: self.allocator ) )
-        }
+        self.url      = url
+        self.name     = name
+        self.children = FileManager.default.directoriesAtURL( url ).compactMap { Folder( url: $0 ) }
     }
 }

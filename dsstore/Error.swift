@@ -24,9 +24,9 @@
 
 import Foundation
 
-public class Error: Swift.Error
+@objc public class Error: NSObject, Swift.Error
 {
-    private var message: String
+    @objc public private( set ) dynamic var message: String
     
     init( message: String )
     {

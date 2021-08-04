@@ -24,44 +24,36 @@
 
 import Foundation
 
-@objc public class Block: NSObject
+public extension FileManager
 {
-    @objc public private( set ) dynamic var mode:     UInt32
-    @objc public private( set ) dynamic var children: [ Block ]  = []
-    @objc public private( set ) dynamic var records:  [ Record ] = []
-    
-    public init( stream: BinaryStream, id: UInt32, allocator: Allocator ) throws
+    func directoriesAtURL( _ url: URL ) -> [ URL ]
     {
-        if id >= allocator.blocks.count || id > Int.max
+        guard let enumerator = FileManager.default.enumerator( atPath: url.path ) else
         {
-            throw Error( message: "Invalid directory ID" )
+            return []
         }
         
-        let ( offset, _ ) = allocator.blocks[ Int( id ) ]
+        var folders = [ URL ]()
         
-        try stream.seek( offset: size_t( offset + 4 ), from: .begin )
-        
-        self.mode = try stream.readUInt32( endianness: .big )
-        let count = try stream.readUInt32( endianness: .big )
-        
-        if self.mode == 0
+        for obj in enumerator
         {
-            for _ in 0 ..< count
+            enumerator.skipDescendents()
+            
+            guard let name = obj as? String else
             {
-                self.records.append( try Record( stream: stream ) )
+                continue
             }
-        }
-        else
-        {
-            for _ in 0 ..< count
+            
+            var isDir: ObjCBool = false
+            
+            guard FileManager.default.fileExists( atPath: url.appendingPathComponent( name ).path, isDirectory: &isDir ), isDir.boolValue else
             {
-                let blockID = try stream.readUInt32( endianness: .big )
-                let pos     = stream.tell()
-                
-                self.children.append( try Block( stream: stream, id: blockID, allocator: allocator ) )
-                try stream.seek( offset: pos, from: .begin )
-                self.records.append( try Record( stream: stream ) )
+                continue
             }
+            
+            folders.append( url.appendingPathComponent( name ) )
         }
+        
+        return folders
     }
 }
