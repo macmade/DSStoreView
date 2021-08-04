@@ -27,10 +27,11 @@ import DSStore
 
 public class DSStoreViewController: NSViewController
 {
-    @objc public private( set ) dynamic var folder:        Folder
-    @objc public private( set ) dynamic var file:          DSStore?
-    @objc public private( set ) dynamic var error:         NSError?
-    @objc public private( set ) dynamic var selectedBlock: BlockNode?
+    @objc public private( set ) dynamic var folder:               Folder
+    @objc public private( set ) dynamic var file:                 DSStore?
+    @objc public private( set ) dynamic var error:                NSError?
+    @objc public private( set ) dynamic var selectedBlock:        BlockNode?
+    @objc public private( set ) dynamic var dataWindowController: DataWindowController?
     
     @IBOutlet private var blocksController:  NSTreeController!
     @IBOutlet private var recordsController: NSArrayController!
@@ -100,6 +101,35 @@ public class DSStoreViewController: NSViewController
                 self.blocksOutlineView.expandItem( nil, expandChildren: true )
             }
         }
+    }
+    
+    @IBAction private func showDetails( _ sender: Any? )
+    {
+        guard let record = self.recordsController.selectedObjects.first as? Record else
+        {
+            return
+        }
+        
+        guard let data = record.value as? Data, record.dataType == .blob else
+        {
+            return
+        }
+        
+        if let controller = self.dataWindowController
+        {
+            controller.window?.close()
+        }
+        
+        let controller            = DataWindowController( data: data )
+        self.dataWindowController = controller
+        controller.window?.title  = record.name
+        
+        if controller.window?.isVisible == false
+        {
+            controller.window?.center()
+        }
+        
+        controller.window?.makeKeyAndOrderFront( sender )
     }
     
     private func selectionDidChange()

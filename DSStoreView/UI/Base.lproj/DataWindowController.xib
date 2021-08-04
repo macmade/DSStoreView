@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DataWindowController" customModule="DSStoreView" customModuleProvider="target">
+            <connections>
+                <outlet property="textView1" destination="Qzh-3o-Rgq" id="Bgf-ms-fiv"/>
+                <outlet property="textView2" destination="HAS-0J-pw0" id="gQI-Js-FKx"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="ul6-QX-Dn6"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="500" height="400"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+            <value key="minSize" type="size" width="500" height="400"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hrt-qy-G4F">
+                        <rect key="frame" x="46" y="367" width="409" height="24"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="xAw-xF-PWW">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment label="Binary" width="200" selected="YES"/>
+                                <segment label="ASCII" width="200" tag="1"/>
+                            </segments>
+                        </segmentedCell>
+                        <connections>
+                            <action selector="changeView:" target="-2" id="IB0-q8-NNm"/>
+                            <binding destination="-2" name="hidden" keyPath="self.loading" id="wg7-Xi-E5E"/>
+                        </connections>
+                    </segmentedControl>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1I-He-JUJ">
+                        <rect key="frame" x="20" y="20" width="460" height="328"/>
+                        <clipView key="contentView" drawsBackground="NO" id="G1Y-ng-8dn">
+                            <rect key="frame" x="1" y="1" width="458" height="326"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="Qzh-3o-Rgq">
+                                    <rect key="frame" x="0.0" y="0.0" width="458" height="326"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="458" height="326"/>
+                                    <size key="maxSize" width="458" height="10000000"/>
+                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <binding destination="-2" name="editable" keyPath="self" id="lPc-Ll-pBg">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSIsNil</string>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="-2" name="font" keyPath="self.font" id="TpG-Mr-wYh"/>
+                                        <binding destination="-2" name="value" keyPath="self.binary" id="xDt-aN-vAu"/>
+                                    </connections>
+                                </textView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="xKU-ph-yfr">
+                            <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="0cq-Bz-Ojs">
+                            <rect key="frame" x="443" y="1" width="16" height="326"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <connections>
+                            <binding destination="-2" name="hidden2" keyPath="self.loading" previousBinding="RLY-Pt-FXH" id="sFh-bu-1zW">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="-2" name="hidden" keyPath="self.showAscii" id="RLY-Pt-FXH"/>
+                        </connections>
+                    </scrollView>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sg1-YK-5Qy">
+                        <rect key="frame" x="20" y="20" width="460" height="328"/>
+                        <clipView key="contentView" drawsBackground="NO" id="Yp6-6o-NX7">
+                            <rect key="frame" x="1" y="1" width="458" height="326"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="HAS-0J-pw0">
+                                    <rect key="frame" x="0.0" y="0.0" width="458" height="326"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="458" height="326"/>
+                                    <size key="maxSize" width="458" height="10000000"/>
+                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <binding destination="-2" name="editable" keyPath="self" id="cjm-3u-xZ9">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSIsNil</string>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="-2" name="font" keyPath="self.font" id="CNv-4Z-QZd"/>
+                                        <binding destination="-2" name="value" keyPath="self.ascii" id="OUW-Qw-2Og"/>
+                                    </connections>
+                                </textView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="hgA-dV-NhP">
+                            <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="jVX-jj-3or">
+                            <rect key="frame" x="443" y="1" width="16" height="326"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <connections>
+                            <binding destination="-2" name="hidden2" keyPath="self.loading" previousBinding="uTH-fU-VAX" id="Cs5-RT-4Hm">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="-2" name="hidden" keyPath="self.showAscii" id="uTH-fU-VAX">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </scrollView>
+                    <progressIndicator maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="LjE-yE-vRF">
+                        <rect key="frame" x="234" y="184" width="32" height="32"/>
+                        <connections>
+                            <binding destination="-2" name="animate" keyPath="self.loading" id="Ppz-PN-d45"/>
+                            <binding destination="-2" name="hidden" keyPath="self.loading" id="5BR-2I-fmN">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </progressIndicator>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Sg1-YK-5Qy" firstAttribute="centerX" secondItem="P1I-He-JUJ" secondAttribute="centerX" id="7ZQ-Jx-93u"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hrt-qy-G4F" secondAttribute="trailing" constant="20" symbolic="YES" id="DZL-8N-Too"/>
+                    <constraint firstItem="Sg1-YK-5Qy" firstAttribute="centerY" secondItem="P1I-He-JUJ" secondAttribute="centerY" id="NPP-QD-IEI"/>
+                    <constraint firstAttribute="bottom" secondItem="P1I-He-JUJ" secondAttribute="bottom" constant="20" symbolic="YES" id="Rrb-lh-2AK"/>
+                    <constraint firstItem="LjE-yE-vRF" firstAttribute="centerY" secondItem="EiT-Mj-1SZ" secondAttribute="centerY" id="Uvr-LQ-er1"/>
+                    <constraint firstItem="Sg1-YK-5Qy" firstAttribute="width" secondItem="P1I-He-JUJ" secondAttribute="width" id="Vaa-73-1r5"/>
+                    <constraint firstItem="P1I-He-JUJ" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="WTG-gd-eeW"/>
+                    <constraint firstItem="LjE-yE-vRF" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="YAa-XU-QVL"/>
+                    <constraint firstItem="P1I-He-JUJ" firstAttribute="top" secondItem="hrt-qy-G4F" secondAttribute="bottom" constant="20" id="a8Q-mE-1fq"/>
+                    <constraint firstAttribute="trailing" secondItem="P1I-He-JUJ" secondAttribute="trailing" constant="20" symbolic="YES" id="bOK-V0-YnQ"/>
+                    <constraint firstItem="hrt-qy-G4F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="cF3-Ke-ndb"/>
+                    <constraint firstItem="hrt-qy-G4F" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="10" id="ehf-5L-Kef"/>
+                    <constraint firstItem="hrt-qy-G4F" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="vdo-mO-agW"/>
+                    <constraint firstItem="Sg1-YK-5Qy" firstAttribute="height" secondItem="P1I-He-JUJ" secondAttribute="height" id="wjO-NG-Osm"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="79" y="144"/>
+        </window>
+    </objects>
+</document>

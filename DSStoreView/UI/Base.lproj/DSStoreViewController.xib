@@ -179,7 +179,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView id="bAA-x4-my5">
-                                                                                <rect key="frame" x="17" y="5" width="163" height="16"/>
+                                                                                <rect key="frame" x="17" y="5" width="165" height="16"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="inL-uT-r3A">
@@ -451,6 +451,7 @@
                                                                     </tableColumn>
                                                                 </tableColumns>
                                                                 <connections>
+                                                                    <action trigger="doubleAction" selector="showDetails:" target="-2" id="San-4x-9by"/>
                                                                     <binding destination="yFg-0o-6oG" name="content" keyPath="arrangedObjects" id="0vV-oN-oAa"/>
                                                                     <binding destination="yFg-0o-6oG" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="0vV-oN-oAa" id="w4O-Up-X8U"/>
                                                                     <binding destination="yFg-0o-6oG" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="w4O-Up-X8U" id="pTk-gM-z7q"/>
