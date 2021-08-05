@@ -51,6 +51,7 @@
 		05FC7EB326BB68F40033FC23 /* IsNotData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7EB226BB68F40033FC23 /* IsNotData.swift */; };
 		05FC7EBD26BB6F560033FC23 /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FC7EBA26BB6F4C0033FC23 /* GitHubUpdates.framework */; };
 		05FC7EBE26BB6F560033FC23 /* GitHubUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05FC7EBA26BB6F4C0033FC23 /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		05FC7EC426BB73C70033FC23 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 05FC7EC126BB73C70033FC23 /* Icon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,7 @@
 		05FC7EB026BB62B70033FC23 /* PropertyListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListNode.swift; sourceTree = "<group>"; };
 		05FC7EB226BB68F40033FC23 /* IsNotData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsNotData.swift; sourceTree = "<group>"; };
 		05FC7EB426BB6F4C0033FC23 /* GitHubUpdates.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GitHubUpdates.xcodeproj; path = Submodules/GitHubUpdates/GitHubUpdates.xcodeproj; sourceTree = "<group>"; };
+		05FC7EC126BB73C70033FC23 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -458,6 +460,7 @@
 		05FC7E7026BAA5BF0033FC23 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				05FC7EC126BB73C70033FC23 /* Icon.icns */,
 				05FC7E7A26BAAA1A0033FC23 /* AboutWindowController.xib */,
 				05FC7EA426BB59180033FC23 /* DataWindowController.xib */,
 				05FC7E8E26BAD9350033FC23 /* DSStoreViewController.xib */,
@@ -548,6 +551,7 @@
 			buildPhases = (
 				05FC7E5C26BAA5850033FC23 /* Sources */,
 				05FC7E5D26BAA5850033FC23 /* Frameworks */,
+				05FC7EC626BB740C0033FC23 /* ShellScript */,
 				05FC7E5E26BAA5850033FC23 /* Resources */,
 				05FC7EBF26BB6F560033FC23 /* Embed Frameworks */,
 			);
@@ -643,12 +647,33 @@
 				05FC7E9026BAD9350033FC23 /* DSStoreViewController.xib in Resources */,
 				05FC7EA626BB59180033FC23 /* DataWindowController.xib in Resources */,
 				05FC7E7726BAA9810033FC23 /* MainWindowController.xib in Resources */,
+				05FC7EC426BB73C70033FC23 /* Icon.icns in Resources */,
 				05FC7EAE26BB620A0033FC23 /* PropertyListWindowController.xib in Resources */,
 				05FC7E7426BAA5BF0033FC23 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05FC7EC626BB740C0033FC23 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    plist=\"DSStoreView/Info.plist\"\n    rev=$(git rev-list `git branch | grep -e \"^*\" | cut -d' ' -f 2` | wc -l)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $rev\" \"$plist\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		054C88BD26B8838F0006A91C /* Sources */ = {
