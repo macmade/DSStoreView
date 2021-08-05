@@ -144,30 +144,31 @@
                                                                                 <binding destination="hpf-Pv-svM" name="toolTip" keyPath="objectValue.name" id="i33-7w-Qzv"/>
                                                                             </connections>
                                                                         </textField>
-                                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mqj-4o-GZw">
-                                                                            <rect key="frame" x="164" y="1" width="66" height="18"/>
-                                                                            <buttonCell key="cell" type="inline" title=".DS_Store" bezelStyle="inline" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zlh-1g-b0p">
-                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                <font key="font" metaFont="smallSystemBold"/>
-                                                                            </buttonCell>
+                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l6p-2D-fds">
+                                                                            <rect key="frame" x="214" y="2" width="16" height="16"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="16" id="8Xf-MZ-4Qa"/>
+                                                                                <constraint firstAttribute="height" constant="16" id="rgg-b4-pmw"/>
+                                                                            </constraints>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="NhA-gN-JKD"/>
                                                                             <connections>
-                                                                                <binding destination="hpf-Pv-svM" name="hidden" keyPath="objectValue.hasDSStoreFile" id="e5k-4w-vgK">
+                                                                                <binding destination="hpf-Pv-svM" name="hidden" keyPath="objectValue.hasDSStoreFile" id="Ne6-Um-Phu">
                                                                                     <dictionary key="options">
                                                                                         <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                                                     </dictionary>
                                                                                 </binding>
                                                                             </connections>
-                                                                        </button>
+                                                                        </imageView>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="MoL-Z6-Z15" firstAttribute="centerY" secondItem="Lhi-a4-SIq" secondAttribute="centerY" id="Cnz-5n-n3M"/>
-                                                                        <constraint firstItem="Mqj-4o-GZw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MoL-Z6-Z15" secondAttribute="trailing" constant="8" symbolic="YES" id="I8w-SR-8gE"/>
+                                                                        <constraint firstItem="l6p-2D-fds" firstAttribute="centerY" secondItem="MoL-Z6-Z15" secondAttribute="centerY" id="JR8-NV-xb8"/>
                                                                         <constraint firstItem="Lhi-a4-SIq" firstAttribute="leading" secondItem="hpf-Pv-svM" secondAttribute="leading" id="P2Q-Pv-ES2"/>
-                                                                        <constraint firstItem="Mqj-4o-GZw" firstAttribute="centerY" secondItem="MoL-Z6-Z15" secondAttribute="centerY" id="Uuj-G2-ZcW"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="Mqj-4o-GZw" secondAttribute="trailing" id="V4j-Ni-q1u"/>
                                                                         <constraint firstItem="Lhi-a4-SIq" firstAttribute="top" secondItem="hpf-Pv-svM" secondAttribute="top" constant="2" id="ZE0-x4-XV2"/>
                                                                         <constraint firstAttribute="bottom" secondItem="Lhi-a4-SIq" secondAttribute="bottom" constant="2" id="aHf-Gs-kXs"/>
+                                                                        <constraint firstItem="l6p-2D-fds" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MoL-Z6-Z15" secondAttribute="trailing" constant="5" id="eby-Ad-Meb"/>
                                                                         <constraint firstItem="MoL-Z6-Z15" firstAttribute="leading" secondItem="Lhi-a4-SIq" secondAttribute="trailing" constant="8" symbolic="YES" id="gB4-5M-c2E"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="l6p-2D-fds" secondAttribute="trailing" id="yBv-66-gvq"/>
                                                                     </constraints>
                                                                     <connections>
                                                                         <outlet property="imageView" destination="Lhi-a4-SIq" id="2PR-V5-K8k"/>
@@ -289,5 +290,6 @@
     <resources>
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
+        <image name="NSStatusAvailable" width="16" height="16"/>
     </resources>
 </document>
