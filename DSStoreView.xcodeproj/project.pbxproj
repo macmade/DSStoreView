@@ -49,6 +49,8 @@
 		05FC7EAE26BB620A0033FC23 /* PropertyListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05FC7EAC26BB620A0033FC23 /* PropertyListWindowController.xib */; };
 		05FC7EB126BB62B70033FC23 /* PropertyListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7EB026BB62B70033FC23 /* PropertyListNode.swift */; };
 		05FC7EB326BB68F40033FC23 /* IsNotData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7EB226BB68F40033FC23 /* IsNotData.swift */; };
+		05FC7EBD26BB6F560033FC23 /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FC7EBA26BB6F4C0033FC23 /* GitHubUpdates.framework */; };
+		05FC7EBE26BB6F560033FC23 /* GitHubUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05FC7EBA26BB6F4C0033FC23 /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 054C88F026B89D780006A91C;
 			remoteInfo = DSStore;
+		};
+		05FC7EB926BB6F4C0033FC23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05FC7EB426BB6F4C0033FC23 /* GitHubUpdates.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 05F82B251EF32EA700EC8A93;
+			remoteInfo = GitHubUpdates;
+		};
+		05FC7EBB26BB6F4C0033FC23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05FC7EB426BB6F4C0033FC23 /* GitHubUpdates.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0555EBA01EF3DDA10016167F;
+			remoteInfo = Relauncher;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -70,6 +86,17 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		05FC7EBF26BB6F560033FC23 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				05FC7EBE26BB6F560033FC23 /* GitHubUpdates.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -166,6 +193,7 @@
 		05FC7EAD26BB620A0033FC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PropertyListWindowController.xib; sourceTree = "<group>"; };
 		05FC7EB026BB62B70033FC23 /* PropertyListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListNode.swift; sourceTree = "<group>"; };
 		05FC7EB226BB68F40033FC23 /* IsNotData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsNotData.swift; sourceTree = "<group>"; };
+		05FC7EB426BB6F4C0033FC23 /* GitHubUpdates.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GitHubUpdates.xcodeproj; path = Submodules/GitHubUpdates/GitHubUpdates.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05FC7EBD26BB6F560033FC23 /* GitHubUpdates.framework in Frameworks */,
 				05FC7E9426BADD900033FC23 /* libdsstore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +237,7 @@
 			children = (
 				054C893826B9786C0006A91C /* LICENSE */,
 				054C893926B9786C0006A91C /* README.md */,
+				05FC7EB426BB6F4C0033FC23 /* GitHubUpdates.xcodeproj */,
 				054C893A26B979510006A91C /* xcconfig */,
 				05FC7E6126BAA5850033FC23 /* DSStoreView */,
 				054C88C326B8838F0006A91C /* dsdump */,
@@ -438,6 +468,15 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		05FC7EB526BB6F4C0033FC23 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05FC7EBA26BB6F4C0033FC23 /* GitHubUpdates.framework */,
+				05FC7EBC26BB6F4C0033FC23 /* Relauncher */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -510,6 +549,7 @@
 				05FC7E5C26BAA5850033FC23 /* Sources */,
 				05FC7E5D26BAA5850033FC23 /* Frameworks */,
 				05FC7E5E26BAA5850033FC23 /* Resources */,
+				05FC7EBF26BB6F560033FC23 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -554,6 +594,12 @@
 			mainGroup = 054C88B826B8838F0006A91C;
 			productRefGroup = 054C88C226B8838F0006A91C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 05FC7EB526BB6F4C0033FC23 /* Products */;
+					ProjectRef = 05FC7EB426BB6F4C0033FC23 /* GitHubUpdates.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				05FC7E5F26BAA5850033FC23 /* DSStoreView */,
@@ -563,6 +609,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		05FC7EBA26BB6F4C0033FC23 /* GitHubUpdates.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GitHubUpdates.framework;
+			remoteRef = 05FC7EB926BB6F4C0033FC23 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		05FC7EBC26BB6F4C0033FC23 /* Relauncher */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = Relauncher;
+			remoteRef = 05FC7EBB26BB6F4C0033FC23 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		054C891226B89DE00006A91C /* Resources */ = {
@@ -715,9 +778,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 054C893E26B979510006A91C /* Debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
 			};
 			name = Debug;
 		};
