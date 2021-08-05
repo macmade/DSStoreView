@@ -81,7 +81,7 @@ public class MainWindowController: NSWindowController, NSOutlineViewDelegate, NS
     private func selectionDidChange()
     {
         self.contentContainer.subviews.forEach { $0.removeFromSuperview() }
-        self.contentController?.dataWindowController?.close()
+        self.contentController?.detailWindowController?.window?.close()
         
         guard let selected = self.foldersController.selectedNodes.first?.representedObject as? Folder else
         {

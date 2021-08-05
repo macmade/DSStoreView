@@ -27,11 +27,11 @@ import DSStore
 
 public class DSStoreViewController: NSViewController
 {
-    @objc public private( set ) dynamic var folder:               Folder
-    @objc public private( set ) dynamic var file:                 DSStore?
-    @objc public private( set ) dynamic var error:                NSError?
-    @objc public private( set ) dynamic var selectedBlock:        BlockNode?
-    @objc public private( set ) dynamic var dataWindowController: DataWindowController?
+    @objc public private( set ) dynamic var folder:                 Folder
+    @objc public private( set ) dynamic var file:                   DSStore?
+    @objc public private( set ) dynamic var error:                  NSError?
+    @objc public private( set ) dynamic var selectedBlock:          BlockNode?
+    @objc public private( set ) dynamic var detailWindowController: NSWindowController?
     
     @IBOutlet private var blocksController:  NSTreeController!
     @IBOutlet private var recordsController: NSArrayController!
@@ -115,21 +115,26 @@ public class DSStoreViewController: NSViewController
             return
         }
         
-        if let controller = self.dataWindowController
+        self.detailWindowController?.window?.close()
+        
+        do
         {
-            controller.window?.close()
+            let plist                   = try PropertyListSerialization.propertyList( from: data, options: [], format: nil )
+            self.detailWindowController = PropertyListWindowController( plist: plist )
+        }
+        catch
+        {
+            self.detailWindowController = DataWindowController( data: data )
         }
         
-        let controller            = DataWindowController( data: data )
-        self.dataWindowController = controller
-        controller.window?.title  = record.name
+        self.detailWindowController?.window?.title  = record.name
         
-        if controller.window?.isVisible == false
+        if self.detailWindowController?.window?.isVisible == false
         {
-            controller.window?.center()
+            self.detailWindowController?.window?.center()
         }
         
-        controller.window?.makeKeyAndOrderFront( sender )
+        self.detailWindowController?.window?.makeKeyAndOrderFront( sender )
     }
     
     private func selectionDidChange()
