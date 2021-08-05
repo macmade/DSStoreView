@@ -191,6 +191,7 @@
                                                                                         </textFieldCell>
                                                                                         <connections>
                                                                                             <binding destination="bAA-x4-my5" name="value" keyPath="objectValue.name" id="T6w-uK-eqN"/>
+                                                                                            <binding destination="bAA-x4-my5" name="toolTip" keyPath="objectValue.name" id="wRQ-WH-0ZZ"/>
                                                                                         </connections>
                                                                                     </textField>
                                                                                 </subviews>
@@ -306,6 +307,7 @@
                                                                                         </textFieldCell>
                                                                                         <connections>
                                                                                             <binding destination="Kzu-Hv-8CY" name="value" keyPath="objectValue.name" id="CX7-pX-nAA"/>
+                                                                                            <binding destination="Kzu-Hv-8CY" name="toolTip" keyPath="objectValue.name" id="SAT-dJ-bT8"/>
                                                                                         </connections>
                                                                                     </textField>
                                                                                 </subviews>
@@ -347,6 +349,11 @@
                                                                                         </textFieldCell>
                                                                                         <connections>
                                                                                             <binding destination="a2z-xq-PQa" name="value" keyPath="objectValue.type" id="r7k-hS-cZs">
+                                                                                                <dictionary key="options">
+                                                                                                    <string key="NSValueTransformerName">HexNumber</string>
+                                                                                                </dictionary>
+                                                                                            </binding>
+                                                                                            <binding destination="a2z-xq-PQa" name="toolTip" keyPath="objectValue.type" id="4co-ye-QDK">
                                                                                                 <dictionary key="options">
                                                                                                     <string key="NSValueTransformerName">HexNumber</string>
                                                                                                 </dictionary>
@@ -395,6 +402,11 @@
                                                                                                     <string key="NSValueTransformerName">RecordDataType</string>
                                                                                                 </dictionary>
                                                                                             </binding>
+                                                                                            <binding destination="DBG-o0-5YV" name="toolTip" keyPath="objectValue" id="gx4-YI-azM">
+                                                                                                <dictionary key="options">
+                                                                                                    <string key="NSValueTransformerName">RecordDataType</string>
+                                                                                                </dictionary>
+                                                                                            </binding>
                                                                                         </connections>
                                                                                     </textField>
                                                                                 </subviews>
@@ -434,6 +446,11 @@
                                                                                         </textFieldCell>
                                                                                         <connections>
                                                                                             <binding destination="a7s-PS-bP6" name="value" keyPath="objectValue" id="kSI-xV-Rjj">
+                                                                                                <dictionary key="options">
+                                                                                                    <string key="NSValueTransformerName">RecordValue</string>
+                                                                                                </dictionary>
+                                                                                            </binding>
+                                                                                            <binding destination="a7s-PS-bP6" name="toolTip" keyPath="objectValue" id="uzY-aK-MhY">
                                                                                                 <dictionary key="options">
                                                                                                     <string key="NSValueTransformerName">RecordValue</string>
                                                                                                 </dictionary>

@@ -103,6 +103,7 @@
                                                                             </textFieldCell>
                                                                             <connections>
                                                                                 <binding destination="XDh-fE-klu" name="value" keyPath="objectValue.name" id="W5E-vK-InV"/>
+                                                                                <binding destination="XDh-fE-klu" name="toolTip" keyPath="objectValue.name" id="p3T-Kn-8Nc"/>
                                                                             </connections>
                                                                         </textField>
                                                                     </subviews>
@@ -140,6 +141,7 @@
                                                                             </textFieldCell>
                                                                             <connections>
                                                                                 <binding destination="hpf-Pv-svM" name="value" keyPath="objectValue.name" id="8fE-NJ-XQB"/>
+                                                                                <binding destination="hpf-Pv-svM" name="toolTip" keyPath="objectValue.name" id="i33-7w-Qzv"/>
                                                                             </connections>
                                                                         </textField>
                                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mqj-4o-GZw">
