@@ -3,3 +3,5 @@ osx_image: xcode12.5
 script:
 - set -o pipefail && xcodebuild -project "DSStoreView.xcodeproj" -scheme "DSStoreView" build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty
 - set -o pipefail && xcodebuild -project "DSStoreView.xcodeproj" -scheme "dsdump" build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty
+notifications:
+    slack: xs-labs:FXh1yLXNkpcVxKZhZU6icdhI
