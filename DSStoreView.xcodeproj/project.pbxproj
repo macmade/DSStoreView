@@ -48,6 +48,7 @@
 		05FC7EAB26BB60940033FC23 /* PropertyListWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7EAA26BB60940033FC23 /* PropertyListWindowController.swift */; };
 		05FC7EAE26BB620A0033FC23 /* PropertyListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05FC7EAC26BB620A0033FC23 /* PropertyListWindowController.xib */; };
 		05FC7EB126BB62B70033FC23 /* PropertyListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7EB026BB62B70033FC23 /* PropertyListNode.swift */; };
+		05FC7EB326BB68F40033FC23 /* IsNotData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC7EB226BB68F40033FC23 /* IsNotData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 		05FC7EAA26BB60940033FC23 /* PropertyListWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListWindowController.swift; sourceTree = "<group>"; };
 		05FC7EAD26BB620A0033FC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PropertyListWindowController.xib; sourceTree = "<group>"; };
 		05FC7EB026BB62B70033FC23 /* PropertyListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListNode.swift; sourceTree = "<group>"; };
+		05FC7EB226BB68F40033FC23 /* IsNotData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsNotData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,6 +415,7 @@
 				05FC7E7F26BAAD830033FC23 /* Folder.swift */,
 				05FC7E8826BAC4520033FC23 /* FolderGroup.swift */,
 				05FC7E9E26BAF8350033FC23 /* HexNumber.swift */,
+				05FC7EB226BB68F40033FC23 /* IsNotData.swift */,
 				05FC7E7826BAA98D0033FC23 /* MainWindowController.swift */,
 				05FC7EB026BB62B70033FC23 /* PropertyListNode.swift */,
 				05FC7EAA26BB60940033FC23 /* PropertyListWindowController.swift */,
@@ -628,6 +631,7 @@
 			files = (
 				05FC7E9F26BAF8350033FC23 /* HexNumber.swift in Sources */,
 				05FC7E9926BAF4580033FC23 /* ArrayIsEmpty.swift in Sources */,
+				05FC7EB326BB68F40033FC23 /* IsNotData.swift in Sources */,
 				05FC7E7E26BAAA1F0033FC23 /* AboutWindowController.swift in Sources */,
 				05FC7E7926BAA98D0033FC23 /* MainWindowController.swift in Sources */,
 				05FC7E7326BAA5BF0033FC23 /* ApplicationDelegate.swift in Sources */,

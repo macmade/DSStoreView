@@ -299,8 +299,8 @@
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="53G-MT-I9Q">
-                                                                                        <rect key="frame" x="-2" y="0.0" width="96" height="16"/>
-                                                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ITO-CC-xJQ">
+                                                                                        <rect key="frame" x="-2" y="0.0" width="37" height="16"/>
+                                                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="ITO-CC-xJQ">
                                                                                             <font key="font" usesAppearanceFont="YES"/>
                                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -342,7 +342,7 @@
                                                                                 <subviews>
                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="z3A-Kt-O06">
                                                                                         <rect key="frame" x="-2" y="1" width="101" height="14"/>
-                                                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="DLI-cv-Pka">
+                                                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="DLI-cv-Pka">
                                                                                             <font key="font" metaFont="smallSystem"/>
                                                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -390,8 +390,8 @@
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="mzE-8s-2MV">
-                                                                                        <rect key="frame" x="-2" y="1" width="101" height="14"/>
-                                                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="oA9-TY-65C">
+                                                                                        <rect key="frame" x="-2" y="1" width="33" height="14"/>
+                                                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="oA9-TY-65C">
                                                                                             <font key="font" metaFont="smallSystem"/>
                                                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -409,11 +409,43 @@
                                                                                             </binding>
                                                                                         </connections>
                                                                                     </textField>
+                                                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="iJ4-ZD-F6T">
+                                                                                        <rect key="frame" x="77" y="-4" width="20.5" height="24"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="20" id="Zwk-6y-5sL"/>
+                                                                                            <constraint firstAttribute="width" constant="20" id="xk9-d7-NmS"/>
+                                                                                        </constraints>
+                                                                                        <buttonCell key="cell" type="square" title="Show Details" bezelStyle="shadowlessSquare" image="NSQuickLookTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Dgz-ho-HIK">
+                                                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                        </buttonCell>
+                                                                                        <connections>
+                                                                                            <binding destination="DBG-o0-5YV" name="argument" keyPath="objectValue" id="0KL-hW-PcL">
+                                                                                                <dictionary key="options">
+                                                                                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                                                                                    <string key="NSSelectorName">showDetailsForRecord:</string>
+                                                                                                </dictionary>
+                                                                                            </binding>
+                                                                                            <binding destination="DBG-o0-5YV" name="hidden" keyPath="objectValue.value" id="BGK-rm-WQP">
+                                                                                                <dictionary key="options">
+                                                                                                    <string key="NSValueTransformerName">IsNotData</string>
+                                                                                                </dictionary>
+                                                                                            </binding>
+                                                                                            <binding destination="-2" name="target" keyPath="self" previousBinding="0KL-hW-PcL" id="5fs-EW-OX7">
+                                                                                                <dictionary key="options">
+                                                                                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                                                                                    <string key="NSSelectorName">showDetailsForRecord:</string>
+                                                                                                </dictionary>
+                                                                                            </binding>
+                                                                                        </connections>
+                                                                                    </button>
                                                                                 </subviews>
                                                                                 <constraints>
                                                                                     <constraint firstItem="mzE-8s-2MV" firstAttribute="leading" secondItem="DBG-o0-5YV" secondAttribute="leading" id="4Ak-1O-jtQ"/>
-                                                                                    <constraint firstAttribute="trailing" secondItem="mzE-8s-2MV" secondAttribute="trailing" id="8qp-JI-sXy"/>
                                                                                     <constraint firstItem="mzE-8s-2MV" firstAttribute="centerY" secondItem="DBG-o0-5YV" secondAttribute="centerY" id="RtF-WD-TEo"/>
+                                                                                    <constraint firstItem="iJ4-ZD-F6T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mzE-8s-2MV" secondAttribute="trailing" constant="5" id="aHY-HU-GGp"/>
+                                                                                    <constraint firstItem="iJ4-ZD-F6T" firstAttribute="centerY" secondItem="mzE-8s-2MV" secondAttribute="centerY" id="etx-Wm-dZ2"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="iJ4-ZD-F6T" secondAttribute="trailing" id="xVf-FP-5ky"/>
                                                                                 </constraints>
                                                                                 <connections>
                                                                                     <outlet property="textField" destination="mzE-8s-2MV" id="iWT-hr-YsW"/>
@@ -439,7 +471,7 @@
                                                                                 <subviews>
                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Mf0-zG-oO2">
                                                                                         <rect key="frame" x="-2" y="0.0" width="95" height="16"/>
-                                                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Ux7-Ri-1GI">
+                                                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="Ux7-Ri-1GI">
                                                                                             <font key="font" usesAppearanceFont="YES"/>
                                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -475,6 +507,8 @@
                                                                     <binding destination="yFg-0o-6oG" name="content" keyPath="arrangedObjects" id="0vV-oN-oAa"/>
                                                                     <binding destination="yFg-0o-6oG" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="0vV-oN-oAa" id="w4O-Up-X8U"/>
                                                                     <binding destination="yFg-0o-6oG" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="w4O-Up-X8U" id="pTk-gM-z7q"/>
+                                                                    <outlet property="dataSource" destination="-2" id="rcT-S6-WbI"/>
+                                                                    <outlet property="delegate" destination="-2" id="7ho-k2-fxv"/>
                                                                 </connections>
                                                             </tableView>
                                                         </subviews>
@@ -575,5 +609,6 @@
     <resources>
         <image name="NSCaution" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
+        <image name="NSQuickLookTemplate" width="21" height="13"/>
     </resources>
 </document>

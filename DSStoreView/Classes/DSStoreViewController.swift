@@ -25,7 +25,7 @@
 import Cocoa
 import DSStore
 
-public class DSStoreViewController: NSViewController
+public class DSStoreViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource
 {
     @objc public private( set ) dynamic var folder:                 Folder
     @objc public private( set ) dynamic var file:                   DSStore?
@@ -110,6 +110,11 @@ public class DSStoreViewController: NSViewController
             return
         }
         
+        self.showDetailsForRecord( record )
+    }
+    
+    @objc private func showDetailsForRecord( _ record: Record )
+    {
         guard let data = record.value as? Data, record.dataType == .blob else
         {
             return
@@ -127,14 +132,14 @@ public class DSStoreViewController: NSViewController
             self.detailWindowController = DataWindowController( data: data )
         }
         
-        self.detailWindowController?.window?.title  = record.name
+        self.detailWindowController?.window?.title = record.name
         
         if self.detailWindowController?.window?.isVisible == false
         {
             self.detailWindowController?.window?.center()
         }
         
-        self.detailWindowController?.window?.makeKeyAndOrderFront( sender )
+        self.detailWindowController?.window?.makeKeyAndOrderFront( nil )
     }
     
     private func selectionDidChange()
